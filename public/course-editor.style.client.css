@@ -1,0 +1,104 @@
+#wbdv-module-list {
+    background-color: cyan;
+}
+.wbdv-module {
+    background-color: lightgray;
+}
+.wbdv-bold {
+    font-weight: bolder;
+}
+.wbdv-module.wbdv-selected {
+    background-color: darkgray;
+}
+
+.wbdv-field.wbdv-new-course {
+    background-color: lightskyblue;
+}
+
+.fas.fa-plus-circle {
+    color: red;
+}
+
+.wbdv-button.wbdv-add-file {
+    float: right;
+}
+
+.btn.wbdv-field.wbdv-hamburger.col-sm {
+    float: left;
+}
+
+.d-none.d-md-block.wbdv-label.wbdv-course-manager {
+    display: flex;
+}
+
+.form-control.wbdv-field.wbdv-new-course.col-sm {
+    display: flex;
+}
+
+.btn.wbdv-course-editor.wbdv-close {
+    color: white;
+}
+
+.wbdv-bold.nav-link {
+    color: white;
+}
+
+.wbdv-bold.nav-link:hover {
+    color: powderblue;
+}
+
+.wbdv-side-bar .nav-pills .nav-item .nav-link {
+    background-color: #686868;
+    color: white;
+}
+
+.wbdv-side-bar .nav-pills .nav-item .nav-link:hover {
+    color: lightblue;
+}
+
+.wbdv-side-bar .nav-pills .nav-item .nav-link .btn.btn-sm {
+    color: white;
+}
+
+.wbdv-side-bar .nav-pills .nav-item .nav-link .btn.btn-sm:hover {
+    color: red;
+}
+
+.btn-add-module {
+    font-size: xx-large;
+    color: white;
+}
+
+.btn-add-module:hover {
+    color: lawngreen;
+}
+
+.btn.wbdv-course-editor.wbdv-close.wbdv-bold:hover {
+    color: red;
+}
+
+.navbar-brand {
+    font-size: x-large;
+}
+
+.navbar.navbar-expand-md.fixed-top.navbar-dark {
+    background-color: #202020;
+}
+
+.svms-main-content {
+    padding-top: 20px;
+}
+
+.nav-item.wbdv-topic-pill {
+    margin-right: 20px;
+}
+
+.nav-item.wbdv-topic-pill > a{
+    font-weight: bold;
+}
+
+.nav.nav-pills.navbar-expand-md.wbdv-topic-pill-list {
+    outline: #202020;
+}
+
+

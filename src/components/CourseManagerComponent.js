@@ -1,5 +1,5 @@
 import React from "react";
-import CourseEditor from "./CourseEditor";
+import CourseEditor from "./CourseEditor/CourseEditor";
 
 class CourseManagerComponent extends React.Component {
     state = {
