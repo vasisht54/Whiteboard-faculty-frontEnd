@@ -105,3 +105,11 @@
     outline: #202020;
 }
 
+html, body {
+    height: 100vh;
+}
+
+.col-3.bg-dark.wbdv-side-bar {
+    height: 100vh;
+}
+
