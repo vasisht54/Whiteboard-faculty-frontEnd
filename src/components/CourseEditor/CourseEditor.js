@@ -1,15 +1,13 @@
 import React from "react";
 import {ModuleList} from "./ModuleList";
 import {NavBarMain} from "./NavBarMain";
+import {SideBar} from "./SideBar";
 
 const CourseEditor = () =>
-       <div>
+       <div className="container-fullwidth">
            <NavBarMain />
            <div className="row">
-                <div className="col-4">
-                    <h4>Module List</h4>
-                    <ModuleList/>
-                </div>
+                <SideBar />
                 <div className="col-8">
                     <h4>Lesson Tabs</h4>
                     <ul>

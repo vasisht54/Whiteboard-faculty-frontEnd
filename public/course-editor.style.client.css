@@ -81,7 +81,7 @@
     font-size: x-large;
 }
 
-.navbar.navbar-expand-md.fixed-top.navbar-dark {
+.navbar.navbar-expand-md.navbar-dark {
     background-color: #202020;
 }
 
@@ -97,8 +97,11 @@
     font-weight: bold;
 }
 
+.bg-dark.wbdv-side-bar {
+    min-height: 100%;
+}
+
 .nav.nav-pills.navbar-expand-md.wbdv-topic-pill-list {
     outline: #202020;
 }
-
 

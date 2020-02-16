@@ -1,8 +1,8 @@
 import React from "react";
 
 export const NavBarMain = () =>
-    <div className="container-fluid wbdv-navbar">
-        <nav className="navbar navbar-dark navbar-expand-md fixed-top">
+    <div className="wbdv-navbar">
+        <nav className="navbar navbar-dark navbar-expand-md">
             <button className="btn wbdv-course-editor wbdv-close wbdv-bold">
                 X
             </button>
@@ -33,4 +33,4 @@ export const NavBarMain = () =>
                 </ul>
             </div>
         </nav>
-    </div>
+    </div>;
