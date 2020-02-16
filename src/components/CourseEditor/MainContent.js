@@ -1,40 +1,24 @@
 import React from "react";
+import {TopicList} from "./TopicList";
 
 export const MainContent = () =>
 
     <div className="container svms-main-content">
-        <ul className="nav nav-pills navbar-expand-md wbdv-topic-pill-list">
-            <li className="nav-item wbdv-topic-pill">
-                <a className="nav-link shadow" href="#">Topic 1</a>
-            </li>
-            <li className="nav-item wbdv-topic-pill">
-                <a className="nav-link active shadow" href="#">Topic 2</a>
-            </li>
-            <li className="nav-item wbdv-topic-pill">
-                <a className="nav-link shadow" href="#">Topic 3</a>
-            </li>
-            <li className="nav-item wbdv-topic-pill">
-                <a className="nav-link shadow" href="#">Topic 4</a>
-            </li>
-            <li className="nav-item wbdv-topic-add-btn">
-                <a className="nav-link shadow" href="#">+</a>
-            </li>
-        </ul>{/*
-        <TopicPills topics = {[
+        <TopicList topics = {[
             {title: "Topic 1"},
             {title: "Topic 2"},
             {title: "Topic 3"},
             {title: "Topic 4"},
             {title: "+"},
-        ]}/>*/}
+        ]}/>
         <div className="container svms-misc-buttons">
             <div className="row">
-                <div className="col-7"></div>
+                <div className="col-7"/>
                 <div className="col-5">
                     <button id="PreviewToggleBtn" className="float-right btn d-inline-flex toggle-btn">
                         <h5>Preview &nbsp;</h5>
                         {/*<i style={vertical-align: middle} className="fas align-middle fa-toggle-off fa-2x"></i>*/}
-                        <i className="fas align-middle fa-toggle-off fa-2x"></i>
+                        <i className="fas align-middle fa-toggle-off fa-2x"/>
                     </button>
                     <button className="btn btn-success float-right">Save</button>
                 </div>
@@ -60,12 +44,12 @@ export const MainContent = () =>
                         </div>
                         <div className="d-inline-flex float-right pr-2 pt-1">
                             <button className="btn badge-warning btn-sm">
-                                <i className="fas fa-arrow-down"></i>
+                                <i className="fas fa-arrow-down"/>
                             </button>
                         </div>
                         <div className="d-inline-flex float-right pr-2 pt-1">
                             <button className="btn btn-warning btn-sm">
-                                <i className="fas fa-arrow-up"></i>
+                                <i className="fas fa-arrow-up"/>
                             </button>
                         </div>
                     </div>
@@ -97,7 +81,7 @@ export const MainContent = () =>
         </div>
         <div className="float-right">
             <button className="btn">
-                <i className="fas fa-plus-circle fa-2x"></i>
+                <i className="fas fa-plus-circle fa-2x"/>
             </button>
         </div>
     </div>;
