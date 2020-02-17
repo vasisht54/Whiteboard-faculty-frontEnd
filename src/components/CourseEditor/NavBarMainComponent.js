@@ -1,7 +1,7 @@
 import React from "react";
-import {LessonList} from "./LessonList";
+import LessonListComponent from "./LessonListComponent";
 
-export const NavBarMain = () =>
+const NavBarMainComponent = () =>
     <div className="wbdv-navbar">
         <nav className="navbar navbar-dark navbar-expand-md">
             <button className="btn wbdv-course-editor wbdv-close wbdv-bold">
@@ -9,7 +9,7 @@ export const NavBarMain = () =>
             </button>
             &nbsp;<a className="navbar-brand wbdv-bold wbdv-course-title" href="#">CS5610 - WebDev</a>
             <div className="navbar-collapse flex-row-reverse">
-                <LessonList lessons = {[
+                <LessonListComponent lessons = {[
                     {title: "Build"},
                     {title: "Pages"},
                     {title: "Theme"},
@@ -21,3 +21,4 @@ export const NavBarMain = () =>
             </div>
         </nav>
     </div>;
+export default NavBarMainComponent;

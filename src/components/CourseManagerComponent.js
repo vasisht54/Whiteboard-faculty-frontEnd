@@ -1,14 +1,10 @@
 import React from "react";
-import CourseEditor from "./CourseEditor/CourseEditor";
+import CourseEditorComponent from "./CourseEditor/CourseEditorComponent";
 
 class CourseManagerComponent extends React.Component {
-    state = {
-
-    }
-
-    render() {
+     render() {
         return (
-            <CourseEditor />
+            <CourseEditorComponent />
         )
     }
 }

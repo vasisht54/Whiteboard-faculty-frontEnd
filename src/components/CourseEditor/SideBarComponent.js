@@ -1,9 +1,9 @@
 import React from "react";
-import {ModuleList} from "./ModuleList";
+import ModuleListComponent from "./ModuleListComponent";
 
-export const SideBar = () =>
+const SideBarComponent = () =>
     <div className="col-3 bg-dark wbdv-side-bar">
-        <ModuleList
+        <ModuleListComponent
             modules = {[
             {title: "Module 1 - jQuery"},
             {title: "Module 2 - React"},
@@ -14,3 +14,4 @@ export const SideBar = () =>
             {title: "Module 7 - Mongo"}
         ]} />
     </div>;
+export default SideBarComponent;
