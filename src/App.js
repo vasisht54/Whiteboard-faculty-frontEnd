@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import CourseManagerComponent from "./components/CourseManagerComponent";
+import CourseManagerComponent from "./components/CourseManager/CourseManagerComponent";
 
 const App = () =>
     <CourseManagerComponent />;
