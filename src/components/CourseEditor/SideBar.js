@@ -3,7 +3,8 @@ import {ModuleList} from "./ModuleList";
 
 export const SideBar = () =>
     <div className="col-3 bg-dark wbdv-side-bar">
-        <ModuleList modules = {[
+        <ModuleList
+            modules = {[
             {title: "Module 1 - jQuery"},
             {title: "Module 2 - React"},
             {title: "Module 3 - Redux"},
