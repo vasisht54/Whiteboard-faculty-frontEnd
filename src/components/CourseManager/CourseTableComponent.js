@@ -1,21 +1,11 @@
 import React from "react";
+import CourseTableHeadComponent from "./CourseTableHeadComponent";
 
 const CourseTableComponent = () =>
     <div className="table-responsive-sm">
         <table className="table table-sm">
             <thead className="thead-light">
-            <tr>
-                <th className="wbdv-header wbdv-title pb-3" scope="col">Title</th>
-                <th className="wbdv-header wbdv-owner pb-3" scope="col">Owned By</th>
-                <th className="wbdv-header wbdv-last-modified" scope="col">Last Modified by me
-                    <button className="btn btn-sm"><i className="fas fa-sort-down"></i></button>
-                    &nbsp;&nbsp;&nbsp;
-                    <button className="btn wbdv-button wbdv-grid-layout wbdv-button wbdv-list-layout"><i className="fas fa-th"></i></button>
-                    &nbsp;&nbsp;&nbsp;
-                    <button className="btn wbdv-header wbdv-sort"><i className="fas fa-sort-alpha-down"></i></button>
-                </th>
-                <th></th>
-            </tr>
+                <CourseTableHeadComponent />
             </thead>
             <tbody>
             <tr className="wbdv-row wbdv-course">
