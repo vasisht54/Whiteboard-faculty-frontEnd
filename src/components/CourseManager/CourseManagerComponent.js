@@ -7,6 +7,7 @@ const CourseManagerComponent = () =>
         <CourseListHeaderComponent />
         <div className="container-sm">
             <CourseTableComponent/>
+
         </div>
     </div>;
 
