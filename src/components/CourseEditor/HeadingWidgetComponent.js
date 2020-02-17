@@ -1,4 +1,5 @@
 import React from "react";
+import InputFieldComponent from "./InputFieldComponent";
 
 const HeadingWidgetComponent = () =>
     <div className="card col">
@@ -31,9 +32,7 @@ const HeadingWidgetComponent = () =>
             </div>
         </div>
         <div className="card-body">
-            <div className="row p-1">
-                <input className="form-control" placeholder="Heading text"/>
-            </div>
+            <InputFieldComponent placeHolder="Heading text" />
             <div className="row p-1">
                 <select className="form-control">
                     <option>Heading 1</option>
@@ -42,9 +41,7 @@ const HeadingWidgetComponent = () =>
                     <option>Heading 4</option>
                 </select>
             </div>
-            <div className="row p-1">
-                <input className="form-control" placeholder="Widget name"/>
-            </div>
+            <InputFieldComponent placeHolder="Widget name" />
             <br/>
             <div className="row p-1">
                 <h4>Preview</h4>
