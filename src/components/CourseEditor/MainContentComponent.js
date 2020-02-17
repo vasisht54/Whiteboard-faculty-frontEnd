@@ -1,6 +1,7 @@
 import React from "react";
 import TopicListComponent from "./TopicListComponent";
 import WidgetListComponent from "./WidgetListComponent";
+import HeadingWidgetComponent from "./HeadingWidgetComponent";
 
 const MainContentComponent = () =>
 
@@ -16,8 +17,9 @@ const MainContentComponent = () =>
         <WidgetListComponent />
 
         <div className="row m-3">
-          
+          <HeadingWidgetComponent/>
         </div>
+
         <div className="float-right">
             <button className="btn">
                 <i className="fas fa-plus-circle fa-2x"/>
