@@ -1,13 +1,13 @@
 import React from "react";
-import CourseTableHeadComponent from "./CourseTableHeadComponent";
-import CourseRowComponent from "./CourseRowComponent";
-import {deleteCourse, findAllCourses} from "../../services/CourseService";
+import CourseTableHeadComponent from "../components/CourseManager/CourseTableHeadComponent";
+import CourseRowComponent from "../components/CourseManager/CourseRowComponent";
+import {deleteCourse, findAllCourses} from "../services/CourseService";
 
-class CourseTableComponent extends React.Component {
+class CourseTableContainer extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
+    state = {
+        courses: this.props.courses
+    };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.courses !== this.props.courses) {
@@ -16,10 +16,6 @@ class CourseTableComponent extends React.Component {
                           })
         }
     }
-
-    state = {
-        courses: this.props.courses
-    };
 
     deleteCourse = (course) =>
         this.setState(prevState => {
@@ -51,4 +47,4 @@ class CourseTableComponent extends React.Component {
       )
     }
 }
-export default CourseTableComponent;
+export default CourseTableContainer;
