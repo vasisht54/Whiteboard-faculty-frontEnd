@@ -1,6 +1,7 @@
 import React from "react";
 import CourseTableComponent from "./CourseTableComponent";
 import CourseGridComponent from "./CourseGridComponent";
+import CourseListHeaderComponent from "./CourseListHeaderComponent";
 
 
 class CourseManagerComponent extends React.Component {
@@ -42,6 +43,16 @@ class CourseManagerComponent extends React.Component {
     render() {
         return (
             <div>
+                <CourseListHeaderComponent />
+                <div className="float-right">
+                    <button onClick={this.setGrid} className="btn wbdv-button wbdv-grid-layout wbdv-button wbdv-list-layout">
+                        <i className="fas fa-th"/>
+                    </button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button onClick={this.setTable} className="btn wbdv-button wbdv-table-layout wbdv-list-layout">
+                        <i className="fas fa-list-ul" />
+                    </button>
+                </div>
                 {
                     this.state.layout === 'table' &&
                     <CourseTableComponent courses={this.state.courses}/>
