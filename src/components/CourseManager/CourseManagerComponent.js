@@ -3,13 +3,14 @@ import CourseTableComponent from "./CourseTableComponent";
 import CourseGridComponent from "./CourseGridComponent";
 import CourseListHeaderComponent from "./CourseListHeaderComponent";
 import CourseEditorComponent from "../CourseEditor/CourseEditorComponent";
-import {findAllCourses} from "../../services/CourseService";
+import {createCourse, findAllCourses} from "../../services/CourseService";
 
 
 class CourseManagerComponent extends React.Component {
     state = {
         layout: "table",
         showEditor: false,
+        newCourseTitle: 'Whatever',
         courses: []
     };
 
@@ -22,6 +23,15 @@ class CourseManagerComponent extends React.Component {
             })
     };
 
+  /* componentDidUpdate(prevProps, prevState, snapshot) {
+        findAllCourses()
+            .then(courses => {
+                this.setState({
+                                  courses: courses
+                              })
+            })
+   }*/
+
     setGrid = () =>
         this.setState({
             layout: 'grid'
@@ -32,16 +42,24 @@ class CourseManagerComponent extends React.Component {
             layout: 'table'
                       });
 
+    onTextEntry = (title) =>
+        this.setState({
+            newCourseTitle: title
+                      });
 
-    addCourse = () =>
+    addCourse = () => {
         this.setState(prevState => {
-            return({
-                courses: [...prevState.courses, {
-                    _id: (new Date).getTime(),
-                    title: 'New Course'
-                }]
-            })
-        });
+            createCourse({title: prevState.newCourseTitle, ownedBy: 'me'})
+                .then(() => {
+                    findAllCourses()
+                        .then(courses => {
+                            this.setState({
+                                              courses: courses
+                                          })
+                        })
+                      })
+        })
+    };
 
     showEditor = () =>
         this.setState({
@@ -58,8 +76,7 @@ class CourseManagerComponent extends React.Component {
             <div>
                 {   !this.state.showEditor &&
                     <div>
-                        {console.log(this.state.courses)}
-                        <CourseListHeaderComponent addCourse={this.addCourse}/>
+                        <CourseListHeaderComponent onTextEntry={this.onTextEntry} addCourse={this.addCourse}/>
                         <div className="float-right">
                             <button onClick={this.setGrid} className="btn wbdv-button wbdv-grid-layout wbdv-button wbdv-list-layout">
                                 <i className="fas fa-th"/>

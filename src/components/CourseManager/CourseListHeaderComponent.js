@@ -1,6 +1,6 @@
 import React from "react";
 
-const CourseListHeaderComponent = ({addCourse}) =>
+const CourseListHeaderComponent = ({addCourse, onTextEntry}) =>
     <nav className="navbar navbar-expand-md navbar-dark bg-primary row">
         <div className="container-fluid">
             <div className="col-2 col-sm-1 col-md-1">
@@ -10,10 +10,11 @@ const CourseListHeaderComponent = ({addCourse}) =>
                 <h3 className="wbdv-label wbdv-course-manager">Course Manager</h3>
             </div>
             <div className="col-8 col-sm-7 col-md-7">
-                <input className="form-control wbdv-field wbdv-new-course" placeholder="New Course Title"/>
+                <input onChange={(e) => {onTextEntry(e.target.value)}}
+                    className="form-control wbdv-field wbdv-new-course" placeholder="New Course Title"/>
             </div>
             <div className="col-2 col-sm-1 col-md-1 float-left">
-                <button onClick={addCourse} className="btn wbdv-button wbdv-add-course"><i className="fas fa-plus-circle fa-2x"/></button>
+                <button onClick = {addCourse} className="btn wbdv-button wbdv-add-course"><i className="fas fa-plus-circle fa-2x"/></button>
             </div>
         </div>
     </nav>;
