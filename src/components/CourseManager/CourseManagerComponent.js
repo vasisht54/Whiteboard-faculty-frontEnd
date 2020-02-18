@@ -10,7 +10,7 @@ class CourseManagerComponent extends React.Component {
     state = {
         layout: "table",
         showEditor: false,
-        newCourseTitle: 'Whatever',
+        newCourseTitle: '',
         courses: []
     };
 
@@ -22,15 +22,6 @@ class CourseManagerComponent extends React.Component {
                               })
             })
     };
-
-  /* componentDidUpdate(prevProps, prevState, snapshot) {
-        findAllCourses()
-            .then(courses => {
-                this.setState({
-                                  courses: courses
-                              })
-            })
-   }*/
 
     setGrid = () =>
         this.setState({
@@ -74,7 +65,8 @@ class CourseManagerComponent extends React.Component {
     render() {
         return (
             <div>
-                {   !this.state.showEditor &&
+                {
+                    !this.state.showEditor &&
                     <div>
                         <CourseListHeaderComponent onTextEntry={this.onTextEntry} addCourse={this.addCourse}/>
                         <div className="float-right">

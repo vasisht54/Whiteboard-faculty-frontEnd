@@ -1,6 +1,7 @@
 import React from "react";
 import CourseTableHeadComponent from "./CourseTableHeadComponent";
 import CourseRowComponent from "./CourseRowComponent";
+import {deleteCourse, findAllCourses} from "../../services/CourseService";
 
 class CourseTableComponent extends React.Component {
 
@@ -22,11 +23,15 @@ class CourseTableComponent extends React.Component {
 
     deleteCourse = (course) =>
         this.setState(prevState => {
-            return({
-                courses: prevState.courses.filter(function(crs){
-                    return crs._id !== course._id;
+            deleteCourse(course._id)
+                .then(() => {
+                    findAllCourses()
+                        .then(courses => {
+                            this.setState({
+                                              courses: courses
+                                          })
+                        })
                 })
-            })
         });
 
 
