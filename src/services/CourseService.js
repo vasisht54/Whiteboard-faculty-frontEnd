@@ -31,11 +31,11 @@ export const createCourse = async (course) =>
 };
 
 export const findAllCourses = async() => {
-    const response = fetch(API_URL);
+    const response = await fetch(API_URL);
     return await response.json();
 };
 
 export const findCourseById = async(id) => {
-    const response = fetch(`${API_URL}/${id}`);
+    const response = await fetch(`${API_URL}/${id}`);
     return await response.json();
 };

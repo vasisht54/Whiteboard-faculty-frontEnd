@@ -1,12 +1,12 @@
 import React from "react";
 
-const CourseRowComponent = ({courses, deleteCourse}) =>
+const CourseRowComponent = ({courses, deleteCourse, showEditor}) =>
     <tbody>
     {
         courses.map(course =>
             <tr key={course._id} className="wbdv-row wbdv-course">
                 <td scope="row"><i className="fas fa-file-alt wbdv-row wbdv-icon"/> &nbsp;
-                    <a className="wbdv-bold wbdv-row wbdv-title" href="course-editor.template.client.html">
+                    <a className="wbdv-bold wbdv-row wbdv-title" onClick={showEditor} href="#">
                         {course.title}
                     </a>
                 </td>

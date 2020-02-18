@@ -3,6 +3,19 @@ import CourseTableHeadComponent from "./CourseTableHeadComponent";
 import CourseRowComponent from "./CourseRowComponent";
 
 class CourseTableComponent extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.courses !== this.props.courses) {
+            this.setState({
+                courses: this.props.courses
+                          })
+        }
+    }
+
     state = {
         courses: this.props.courses
     };
@@ -16,6 +29,7 @@ class CourseTableComponent extends React.Component {
             })
         });
 
+
     render() {
       return(
           <div className="table-responsive-sm">
@@ -24,6 +38,7 @@ class CourseTableComponent extends React.Component {
                   <CourseTableHeadComponent />
                   </thead>
                   <CourseRowComponent
+                      showEditor = {this.props.showEditor}
                       deleteCourse = {this.deleteCourse}
                       courses = {this.state.courses}/>
               </table>

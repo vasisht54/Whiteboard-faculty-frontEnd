@@ -1,10 +1,10 @@
 import React from "react";
 import LessonListComponent from "./LessonListComponent";
 
-const NavBarMainComponent = () =>
+const NavBarMainComponent = ({closeEditor}) =>
     <div className="wbdv-navbar">
         <nav className="navbar navbar-dark navbar-expand-md">
-            <button className="btn wbdv-course-editor wbdv-close wbdv-bold">
+            <button onClick={closeEditor} className="btn wbdv-course-editor wbdv-close wbdv-bold">
                 X
             </button>
             &nbsp;<a className="navbar-brand wbdv-bold wbdv-course-title" href="#">CS5610 - WebDev</a>

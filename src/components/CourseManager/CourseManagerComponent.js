@@ -2,17 +2,24 @@ import React from "react";
 import CourseTableComponent from "./CourseTableComponent";
 import CourseGridComponent from "./CourseGridComponent";
 import CourseListHeaderComponent from "./CourseListHeaderComponent";
+import CourseEditorComponent from "../CourseEditor/CourseEditorComponent";
+import {findAllCourses} from "../../services/CourseService";
 
 
 class CourseManagerComponent extends React.Component {
     state = {
-        layout: "grid",
-        courses: [
-            {_id:'123',title: 'DBMS',ownedBy: 'me', lastModified: "1/1/2020"},
-            {_id:'234',title: 'WebDev',ownedBy: 'me', lastModified: "1/1/2020"},
-            {_id:'345',title: 'Algo',ownedBy: 'me', lastModified: "1/1/2020"},
-            {_id:'456',title: 'PDP',ownedBy: 'me', lastModified: "1/1/2020"}
-        ]
+        layout: "table",
+        showEditor: false,
+        courses: []
+    };
+
+    componentDidMount() {
+        findAllCourses()
+            .then(courses => {
+                this.setState({
+                    courses: courses
+                              })
+            })
     };
 
     setGrid = () =>
@@ -25,41 +32,56 @@ class CourseManagerComponent extends React.Component {
             layout: 'table'
                       });
 
-    toggle = () =>
+
+    addCourse = () =>
         this.setState(prevState => {
-           if(prevState.layout === 'grid') {
-               return {
-                   layout: 'table'
-               }
-           }
-           else {
-               return {
-                   layout: 'grid'
-               }
-           }
+            return({
+                courses: [...prevState.courses, {
+                    _id: (new Date).getTime(),
+                    title: 'New Course'
+                }]
+            })
         });
 
+    showEditor = () =>
+        this.setState({
+            showEditor: true
+                      });
+
+    closeEditor = () =>
+        this.setState({
+                          showEditor: false
+                      });
 
     render() {
         return (
             <div>
-                <CourseListHeaderComponent />
-                <div className="float-right">
-                    <button onClick={this.setGrid} className="btn wbdv-button wbdv-grid-layout wbdv-button wbdv-list-layout">
-                        <i className="fas fa-th"/>
-                    </button>
-                    &nbsp;&nbsp;&nbsp;
-                    <button onClick={this.setTable} className="btn wbdv-button wbdv-table-layout wbdv-list-layout">
-                        <i className="fas fa-list-ul" />
-                    </button>
-                </div>
-                {
-                    this.state.layout === 'table' &&
-                    <CourseTableComponent courses={this.state.courses}/>
+                {   !this.state.showEditor &&
+                    <div>
+                        {console.log(this.state.courses)}
+                        <CourseListHeaderComponent addCourse={this.addCourse}/>
+                        <div className="float-right">
+                            <button onClick={this.setGrid} className="btn wbdv-button wbdv-grid-layout wbdv-button wbdv-list-layout">
+                                <i className="fas fa-th"/>
+                            </button>
+                            &nbsp;&nbsp;&nbsp;
+                            <button onClick={this.setTable} className="btn wbdv-button wbdv-table-layout wbdv-list-layout">
+                                <i className="fas fa-list-ul"/>
+                            </button>
+                        </div>
+                        {
+                            this.state.layout === 'table' &&
+                            <CourseTableComponent showEditor={this.showEditor} courses={this.state.courses}/>
+                        }
+                        {
+                            this.state.layout === 'grid' &&
+                            <CourseGridComponent courses={this.state.courses}/>
+                        }
+                    </div>
                 }
                 {
-                    this.state.layout === 'grid' &&
-                    <CourseGridComponent courses={this.state.courses}/>
+                    this.state.showEditor &&
+                    <CourseEditorComponent closeEditor = {this.closeEditor}  />
                 }
             </div>
         )

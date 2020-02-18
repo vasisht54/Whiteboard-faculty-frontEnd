@@ -3,9 +3,9 @@ import NavBarMainComponent from "./NavBarMainComponent";
 import SideBarComponent from "./SideBarComponent";
 import MainContentComponent from "./MainContentComponent";
 
-const CourseEditorComponent = () =>
+const CourseEditorComponent = ({closeEditor}) =>
        <div className="container-fullwidth">
-           <NavBarMainComponent />
+           <NavBarMainComponent closeEditor = {closeEditor}/>
            <div className="row">
                <SideBarComponent />
                <div className="col-9">
