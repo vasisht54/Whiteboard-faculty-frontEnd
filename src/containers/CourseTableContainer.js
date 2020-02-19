@@ -1,12 +1,13 @@
 import React from "react";
 import CourseTableHeadComponent from "../components/CourseManager/CourseTableHeadComponent";
 import CourseRowComponent from "../components/CourseManager/CourseRowComponent";
-import {deleteCourse, findAllCourses} from "../services/CourseService";
+import {deleteCourse, findAllCourses, updateCourse} from "../services/CourseService";
 
 class CourseTableContainer extends React.Component {
 
     state = {
-        courses: this.props.courses
+        courses: this.props.courses,
+        updatedCourseTitle: ''
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -31,6 +32,25 @@ class CourseTableContainer extends React.Component {
         });
 
 
+    editCourse = (course) =>
+        this.setState(prevState => {
+            updateCourse(course._id, {title: prevState.updatedCourseTitle, ownedBy: "me"})
+                .then(() => {
+                    findAllCourses()
+                        .then(courses => {
+                            this.setState({
+                                courses: courses
+                                          })
+                        })
+                })
+        });
+
+
+    onTextEntry = (title) =>
+        this.setState({
+                          updatedCourseTitle: title
+                      });
+
     render() {
       return(
           <div className="table-responsive-sm">
@@ -39,6 +59,9 @@ class CourseTableContainer extends React.Component {
                   <CourseTableHeadComponent />
                   </thead>
                   <CourseRowComponent
+                      updatedCourseTitle = {this.state.updatedCourseTitle}
+                      onTextEntry = {this.onTextEntry}
+                      editCourse = {this.editCourse}
                       showEditor = {this.props.showEditor}
                       deleteCourse = {this.deleteCourse}
                       courses = {this.state.courses}/>
