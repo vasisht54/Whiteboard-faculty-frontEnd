@@ -1,6 +1,6 @@
 import React from "react";
 import CourseTableHeadComponent from "../components/CourseManager/CourseTableHeadComponent";
-import CourseRowComponent from "../components/CourseManager/CourseRowComponent";
+import CourseTableBodyComponent from "../components/CourseManager/CourseTableBodyComponent";
 import {deleteCourse, findAllCourses, updateCourse} from "../services/CourseService";
 
 class CourseTableContainer extends React.Component {
@@ -59,7 +59,7 @@ class CourseTableContainer extends React.Component {
                       <thead className="thead-light">
                       <CourseTableHeadComponent />
                       </thead>
-                      <CourseRowComponent
+                      <CourseTableBodyComponent
                           updatedCourseTitle = {this.state.updatedCourseTitle}
                           onTextEntry = {this.onTextEntry}
                           editCourse = {this.editCourse}

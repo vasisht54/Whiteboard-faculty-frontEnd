@@ -1,8 +1,8 @@
 import React from "react";
-import CourseCardComponent from "./CourseCardComponent";
-import {findAllCourses, deleteCourse, updateCourse} from "../../services/CourseService";
+import CourseCardComponent from "../components/CourseManager/CourseCardComponent";
+import {findAllCourses, deleteCourse, updateCourse} from "../services/CourseService";
 
-class CourseCardList extends React.Component {
+class CourseCardListComponent extends React.Component {
     state = {
         courses: this.props.courses,
         updatedCourseTitle: ''
@@ -70,4 +70,4 @@ class CourseCardList extends React.Component {
         )
     }
 }
-export default CourseCardList;
+export default CourseCardListComponent;

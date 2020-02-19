@@ -1,10 +1,9 @@
 import React from "react";
-import CourseCardList from "../components/CourseManager/CourseCardList";
+import CourseCardListComponent from "./CourseCardListComponent";
 
-const CourseGridContainer = () =>
-    <CourseCardList
-        updatedCourseTitle = {this.state.updatedCourseTitle}
-        showEditor = {this.props.showEditor}
-        courses={this.props.courses}/>;
+const CourseGridContainer = ({showEditor, courses}) =>
+    <CourseCardListComponent
+        showEditor = {showEditor}
+        courses={courses}/>;
 
 export default CourseGridContainer;
