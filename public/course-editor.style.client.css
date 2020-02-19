@@ -113,3 +113,7 @@ html, body {
     height: 100vh;
 }
 
+.card {
+    padding-top: 4px;
+    padding-left: 4px;
+}
