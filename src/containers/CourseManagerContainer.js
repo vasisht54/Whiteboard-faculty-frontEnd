@@ -8,7 +8,7 @@ import {createCourse, findAllCourses} from "../services/CourseService";
 
 class CourseManagerContainer extends React.Component {
     state = {
-        layout: "grid",
+        layout: "table",
         showEditor: false,
         newCourseTitle: '',
         courses: []

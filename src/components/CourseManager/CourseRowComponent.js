@@ -24,7 +24,7 @@ class CourseRowComponent extends React.Component {
                             <td>
                                 <i className="fas fa-file-alt wbdv-row wbdv-icon"/>
                                 <input onChange={(e) => this.props.onTextEntry(e.target.value)}
-                                    value = {course.title} className="form-control w-75"/>
+                                    className="form-control w-75"/>
                             </td>
                         }
                         <td className="wbdv-row wbdv-owner">{course.ownedBy}</td>

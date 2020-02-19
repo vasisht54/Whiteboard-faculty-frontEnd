@@ -53,19 +53,21 @@ class CourseTableContainer extends React.Component {
 
     render() {
       return(
-          <div className="table-responsive-sm">
-              <table className="table table-sm">
-                  <thead className="thead-light">
-                  <CourseTableHeadComponent />
-                  </thead>
-                  <CourseRowComponent
-                      updatedCourseTitle = {this.state.updatedCourseTitle}
-                      onTextEntry = {this.onTextEntry}
-                      editCourse = {this.editCourse}
-                      showEditor = {this.props.showEditor}
-                      deleteCourse = {this.deleteCourse}
-                      courses = {this.state.courses}/>
-              </table>
+          <div className="container-fluid">
+              <div className="table-responsive-sm">
+                  <table className="table table-sm">
+                      <thead className="thead-light">
+                      <CourseTableHeadComponent />
+                      </thead>
+                      <CourseRowComponent
+                          updatedCourseTitle = {this.state.updatedCourseTitle}
+                          onTextEntry = {this.onTextEntry}
+                          editCourse = {this.editCourse}
+                          showEditor = {this.props.showEditor}
+                          deleteCourse = {this.deleteCourse}
+                          courses = {this.state.courses}/>
+                  </table>
+              </div>
           </div>
       )
     }
