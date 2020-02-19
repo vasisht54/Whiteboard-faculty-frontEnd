@@ -1,6 +1,6 @@
 import React from "react";
 import CourseTableContainer from "./CourseTableContainer";
-import CourseGridComponent from "../components/CourseManager/CourseGridComponent";
+import CourseGridContainer from "./CourseGridContainer";
 import CourseListHeaderComponent from "../components/CourseManager/CourseListHeaderComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
 import {createCourse, findAllCourses} from "../services/CourseService";
@@ -84,7 +84,7 @@ class CourseManagerContainer extends React.Component {
                         }
                         {
                             this.state.layout === 'grid' &&
-                            <CourseGridComponent courses={this.state.courses} showEditor={this.showEditor}/>
+                            <CourseGridContainer courses={this.state.courses} showEditor={this.showEditor}/>
                         }
                     </div>
                 }
