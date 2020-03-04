@@ -2,6 +2,7 @@ import React from "react";
 import CourseTableHeadComponent from "../components/CourseManager/CourseTableHeadComponent";
 import CourseTableBodyComponent from "../components/CourseManager/CourseTableBodyComponent";
 import {deleteCourse, findAllCourses, updateCourse} from "../services/CourseService";
+import CourseCardListComponent from "./CourseCardListComponent";
 
 class CourseTableContainer extends React.Component {
 

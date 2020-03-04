@@ -49,13 +49,13 @@ class CourseCardListComponent extends React.Component {
                 })
         });
 
-    render() {
+    render(){
         return(
             <ul className="card-container">
                 <h4 className="pt-2">Recent Documents</h4>
                 <div className="row">
                     {
-                        this.props.courses.map(course =>
+                        this.state.courses.map(course =>
                             <CourseCardComponent
                                 deleteCourse = {this.deleteCourse}
                                 course = {course}

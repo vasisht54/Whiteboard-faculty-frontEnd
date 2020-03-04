@@ -80,7 +80,7 @@ class CourseManagerContainer extends React.Component {
                         </div>
                         {
                             this.state.layout === 'table' &&
-                            <CourseTableContainer showEditor={this.showEditor} courses={this.state.courses}/>
+                            <CourseTableContainer  showEditor={this.showEditor} courses={this.state.courses}/>
                         }
                         {
                             this.state.layout === 'grid' &&
