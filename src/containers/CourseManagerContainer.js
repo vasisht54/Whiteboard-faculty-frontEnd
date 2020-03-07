@@ -4,7 +4,7 @@ import CourseGridContainer from "./CourseGridContainer";
 import CourseListHeaderComponent from "../components/CourseManager/CourseListHeaderComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
 import {createCourse, findAllCourses} from "../services/CourseService";
-
+import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 
 class CourseManagerContainer extends React.Component {
     state = {
@@ -68,24 +68,54 @@ class CourseManagerContainer extends React.Component {
                 {
                     !this.state.showEditor &&
                     <div>
-                        <CourseListHeaderComponent onTextEntry={this.onTextEntry} addCourse={this.addCourse}/>
-                        <div className="float-right">
-                            <button onClick={this.setGrid} className="btn wbdv-button wbdv-grid-layout wbdv-button wbdv-list-layout">
-                                <i className="fas fa-th"/>
-                            </button>
-                            &nbsp;&nbsp;&nbsp;
-                            <button onClick={this.setTable} className="btn wbdv-button wbdv-table-layout wbdv-list-layout">
-                                <i className="fas fa-list-ul"/>
-                            </button>
-                        </div>
-                        {
+                        <Router>
+                            <CourseListHeaderComponent onTextEntry={this.onTextEntry} addCourse={this.addCourse}/>
+                            <div className="float-right">
+                                <Link to="/grid">
+                                    <button onClick={this.setGrid}
+                                            className="btn wbdv-button wbdv-grid-layout wbdv-button wbdv-list-layout">
+                                        <i className="fas fa-th"/>
+                                    </button>
+                                </Link>
+                                &nbsp;&nbsp;&nbsp;
+                                <Link to="/table">
+                                    <button onClick={this.setTable}
+                                            className="btn wbdv-button wbdv-table-layout wbdv-list-layout">
+                                        <i className="fas fa-list-ul"/>
+                                    </button>
+                                </Link>
+                            </div>
+
+                            <Route path = {["/", "/table"]}
+                                    exact = {true}
+                                   render =
+                                {(props) =>
+                                    <CourseTableContainer {...props}
+                                                      showEditor={this.showEditor}
+                                                      courses={this.state.courses}
+                                    />
+                                }
+                            />
+                            <Route path = "/grid"
+                                   exact = {true}
+                                   render =
+                                {(props) =>
+                                    <CourseGridContainer {...props}
+                                                          courses={this.state.courses}
+                                                          showEditor={this.showEditor}
+                                    />
+                                }
+                            />
+                        </Router>
+
+                        {/*{
                             this.state.layout === 'table' &&
                             <CourseTableContainer  showEditor={this.showEditor} courses={this.state.courses}/>
                         }
                         {
                             this.state.layout === 'grid' &&
                             <CourseGridContainer courses={this.state.courses} showEditor={this.showEditor}/>
-                        }
+                        }*/}
                     </div>
                 }
                 {
