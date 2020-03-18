@@ -8,35 +8,36 @@ import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 
 class CourseManagerContainer extends React.Component {
     state = {
-        layout: "table",
-        showEditor: false,
+        layout: 'table',
         newCourseTitle: '',
-        courses: []
+        courses: [],
+        showEditor: false
     };
 
     componentDidMount() {
+
         findAllCourses()
             .then(courses => {
                 this.setState({
-                    courses: courses
-                              })
+                    courses
+                })
             })
     };
 
     setGrid = () =>
         this.setState({
             layout: 'grid'
-                      });
+        });
 
     setTable = () =>
         this.setState({
             layout: 'table'
-                      });
+        });
 
     onTextEntry = (title) =>
         this.setState({
             newCourseTitle: title
-                      });
+        });
 
     addCourse = () => {
         this.setState(prevState => {
@@ -45,40 +46,40 @@ class CourseManagerContainer extends React.Component {
                     findAllCourses()
                         .then(courses => {
                             this.setState({
-                                              courses: courses
-                                          })
+                                courses
+                            })
                         })
-                      })
+                })
         })
     };
 
     showEditor = () =>
         this.setState({
             showEditor: true
-                      });
+        });
 
     closeEditor = () =>
         this.setState({
-                          showEditor: false
-                      });
+            showEditor: false
+        });
 
     render() {
         return (
             <div>
-                {
-                    !this.state.showEditor &&
-                    <div>
-                        <Router>
+               {/* <Router>
+                    {
+                        !this.state.showEditor &&
+                        <div>
                             <CourseListHeaderComponent onTextEntry={this.onTextEntry} addCourse={this.addCourse}/>
                             <div className="float-right">
-                                <Link to="/grid">
+                                <Link to="/course-list/grid">
                                     <button onClick={this.setGrid}
                                             className="btn wbdv-button wbdv-grid-layout wbdv-button wbdv-list-layout">
                                         <i className="fas fa-th"/>
                                     </button>
                                 </Link>
                                 &nbsp;&nbsp;&nbsp;
-                                <Link to="/table">
+                                <Link to="/course-list/table">
                                     <button onClick={this.setTable}
                                             className="btn wbdv-button wbdv-table-layout wbdv-list-layout">
                                         <i className="fas fa-list-ul"/>
@@ -86,36 +87,57 @@ class CourseManagerContainer extends React.Component {
                                 </Link>
                             </div>
 
-                            <Route path = {["/", "/table"]}
-                                    exact = {true}
-                                   render =
-                                {(props) =>
-                                    <CourseTableContainer {...props}
-                                                      showEditor={this.showEditor}
-                                                      courses={this.state.courses}
-                                    />
-                                }
-                            />
-                            <Route path = "/grid"
-                                   exact = {true}
-                                   render =
-                                {(props) =>
-                                    <CourseGridContainer {...props}
-                                                          courses={this.state.courses}
-                                                          showEditor={this.showEditor}
-                                    />
-                                }
-                            />
-                        </Router>
+                            <Route path="/table"
+                                   exact={true}
+                                   render=
+                                       {() =>
+                                           <CourseTableContainer
 
-                        {/*{
+                                               showEditor={this.showEditor}
+                                               courses={this.state.courses}
+                                           />
+                                       }
+                            />
+                            <Route path="/grid"
+                                   exact={true}
+                                   render=
+                                       {() =>
+                                           <CourseGridContainer
+
+                                               courses={this.state.courses}
+                                               showEditor={this.showEditor}
+                                           />
+                                       }
+                            />
+                        </div>
+                    }
+                    {
+                        this.state.showEditor &&
+                        <CourseEditorComponent closeEditor={this.closeEditor} />
+                    }
+
+                </Router>*/}
+                {
+                    !this.state.showEditor &&
+                    <div>
+                        <CourseListHeaderComponent onTextEntry={this.onTextEntry} addCourse={this.addCourse}/>
+                        <div className="float-right">
+                            <button onClick={this.setGrid} className="btn wbdv-button wbdv-grid-layout wbdv-button wbdv-list-layout">
+                                <i className="fas fa-th"/>
+                            </button>
+                            &nbsp;&nbsp;&nbsp;
+                            <button onClick={this.setTable} className="btn wbdv-button wbdv-table-layout wbdv-list-layout">
+                                <i className="fas fa-list-ul"/>
+                            </button>
+                        </div>
+                        {
                             this.state.layout === 'table' &&
                             <CourseTableContainer  showEditor={this.showEditor} courses={this.state.courses}/>
                         }
                         {
                             this.state.layout === 'grid' &&
                             <CourseGridContainer courses={this.state.courses} showEditor={this.showEditor}/>
-                        }*/}
+                        }
                     </div>
                 }
                 {
@@ -126,5 +148,7 @@ class CourseManagerContainer extends React.Component {
         )
     }
 }
+
+
 
 export default CourseManagerContainer;

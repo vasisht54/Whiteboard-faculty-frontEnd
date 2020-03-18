@@ -1,5 +1,5 @@
 import React from "react";
-import LessonListComponent from "./LessonListComponent";
+import NavListComponent from "./NavListComponent";
 
 const NavBarMainComponent = ({closeEditor}) =>
     <div className="wbdv-navbar">
@@ -9,7 +9,7 @@ const NavBarMainComponent = ({closeEditor}) =>
             </button>
             &nbsp;<a className="navbar-brand wbdv-bold wbdv-course-title" href="#">CS5610 - WebDev</a>
             <div className="navbar-collapse flex-row-reverse">
-                <LessonListComponent lessons = {[
+                <NavListComponent lessons = {[
                     {title: "Build"},
                     {title: "Pages"},
                     {title: "Theme"},

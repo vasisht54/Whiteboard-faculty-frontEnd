@@ -1,12 +1,12 @@
 import React from "react";
-import LessonTabComponent from "./LessonTabComponent";
+import NavTabComponent from "./NavTabComponent";
 
-const LessonListComponent = ({lessons}) =>
+const NavListComponent = ({lessons}) =>
     <ul className="nav nav-pills">
         {
             lessons.map(lesson =>
-                    <LessonTabComponent lesson={lesson} />
+                    <NavTabComponent lesson={lesson} />
             )
         }
     </ul>;
-export default LessonListComponent;
+export default NavListComponent;

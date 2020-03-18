@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 class CourseRowComponent extends React.Component {
     state = {
@@ -16,6 +17,9 @@ class CourseRowComponent extends React.Component {
                            onClick={this.props.showEditor} href="#">
                             {this.props.course.title}
                         </a>
+                        {/*<Link to="courses/:courseId">
+                            {this.props.course.title}
+                        </Link>*/}
                     </td>
                              :
                     <td>

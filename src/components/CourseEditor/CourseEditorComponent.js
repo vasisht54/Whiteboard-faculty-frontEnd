@@ -12,6 +12,6 @@ const CourseEditorComponent = ({closeEditor}) =>
                    <MainContentComponent/>
                </div>
            </div>
-        </div>
+        </div>;
 
 export default CourseEditorComponent;
