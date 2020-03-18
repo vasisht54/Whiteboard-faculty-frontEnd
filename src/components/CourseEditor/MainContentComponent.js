@@ -14,6 +14,7 @@ const MainContentComponent = () =>
             {title: "Lesson 4"},
             {title: "+"},
         ]}/>
+        <br />
         <TopicListComponent topics = {[
             {title: "Topic 1"},
             {title: "Topic 2"},

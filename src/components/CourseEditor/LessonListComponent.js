@@ -1,11 +1,11 @@
 import React from "react";
-import TopicPillComponent from "./TopicPillComponent";
+import LessonTabComponent from "./LessonTabComponent";
 
 const LessonListComponent = ({lessons}) =>
-    <ul className="nav nav-pills navbar-expand-md wbdv-topic-pill-list">
+    <ul className="nav nav-tabs navbar-expand-md wbdv-topic-pill-list">
         {
             lessons.map(lesson =>
-                <TopicPillComponent lesson = {lesson} />
+                <LessonTabComponent lesson = {lesson} />
             )
         }
     </ul>;
