@@ -1,11 +1,11 @@
 import React from "react";
 import NavTabComponent from "./NavTabComponent";
 
-const NavListComponent = ({lessons}) =>
+const NavListComponent = ({navTabs}) =>
     <ul className="nav nav-pills">
         {
-            lessons.map(lesson =>
-                    <NavTabComponent lesson={lesson} />
+            navTabs.map(navTab =>
+                    <NavTabComponent navTab={navTab} />
             )
         }
     </ul>;

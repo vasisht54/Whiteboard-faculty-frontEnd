@@ -9,7 +9,7 @@ const NavBarMainComponent = ({closeEditor}) =>
             </button>
             &nbsp;<a className="navbar-brand wbdv-bold wbdv-course-title" href="#">CS5610 - WebDev</a>
             <div className="navbar-collapse flex-row-reverse">
-                <NavListComponent lessons = {[
+                <NavListComponent navTabs = {[
                     {title: "Build"},
                     {title: "Pages"},
                     {title: "Theme"},

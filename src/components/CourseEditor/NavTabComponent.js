@@ -1,7 +1,7 @@
 import React from "react";
 
-const NavTabComponent = ({lesson}) =>
+const NavTabComponent = ({navTab}) =>
     <li className="nav-item wbdv-page-tab">
-        <a href="#" className="wbdv-bold nav-link">{lesson.title}</a>
+        <a href="#" className="wbdv-bold nav-link">{navTab.title}</a>
     </li>;
 export default NavTabComponent;

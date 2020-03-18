@@ -2,10 +2,18 @@ import React from "react";
 import TopicListComponent from "./TopicListComponent";
 import WidgetListComponent from "./WidgetListComponent";
 import HeadingWidgetComponent from "./HeadingWidgetComponent";
+import LessonListComponent from "./LessonListComponent";
 
 const MainContentComponent = () =>
 
     <div className="container svms-main-content">
+        <LessonListComponent lessons={[
+            {title: "Lesson 1"},
+            {title: "Lesson 2"},
+            {title: "Lesson 3"},
+            {title: "Lesson 4"},
+            {title: "+"},
+        ]}/>
         <TopicListComponent topics = {[
             {title: "Topic 1"},
             {title: "Topic 2"},
