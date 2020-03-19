@@ -6,7 +6,6 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 
 const CourseEditorComponent = ({closeEditor}) =>
-    /*<Provider store={store}>*/
        <div className="container-fullwidth">
            <NavBarMainComponent closeEditor = {closeEditor}/>
            <div className="row">
@@ -16,6 +15,5 @@ const CourseEditorComponent = ({closeEditor}) =>
                </div>
            </div>
         </div>;
-/*    </Provider>;*/
 
 export default CourseEditorComponent;

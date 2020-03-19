@@ -4,21 +4,6 @@ import CourseGridContainer from "./CourseGridContainer";
 import CourseListHeaderComponent from "../components/CourseManager/CourseListHeaderComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
 import {createCourse, findAllCourses} from "../services/CourseService";
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-import {Provider} from "react-redux";
-import {createStore} from "redux";
-
-/*const initialState = {
-    modules: [
-        {_id: "123", title: "Module 1"},
-        {_id: "234", title: "Module 3"},
-        {_id: "345", title: "Module 2"}
-    ]
-}
-
-const moduleFSM = (state = initialState, action) => state;
-
-const store = createStore(moduleFSM);*/
 
 class CourseManagerContainer extends React.Component {
     state = {

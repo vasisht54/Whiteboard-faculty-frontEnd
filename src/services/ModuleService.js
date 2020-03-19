@@ -39,3 +39,11 @@ export const findModule = async(moduleId) => {
     const response = await fetch(`${API_URL}/modules/${moduleId}`);
     return await response.json();
 };
+
+export default  {
+    findModule,
+    findModulesForCourse,
+    createModule,
+    deleteModule,
+    updateModule
+}

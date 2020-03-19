@@ -1,23 +1,39 @@
 import React from "react";
 import ModuleItemComponent from "./ModuleItemComponent";
 import connect from "react-redux/lib/connect/connect";
-import {CREATE_MODULE, DELETE_MODULE} from "../../actions/moduleActions";
+import {
+    createModule,
+    deleteModule, FIND_MODULES_FOR_COURSE
+} from "../../actions/moduleActions";
+import moduleService from "../../services/ModuleService";
 
-const ModuleListComponent = ({modules, createModule, deleteModule}) =>
-    <ul className="nav flex-column nav-pills pt-3 wbdv-module-list">
-        {
-            modules && modules.map(module =>
-                <ModuleItemComponent module = {module} deleteModule={deleteModule}/>
-            )
-        }
-        <li className="bg-dark">
-            <a href="#" className="nav-link">
-                <button onClick={() => createModule('New Module')} className="btn float-right btn-add-module wbdv-module-item-add-btn">
-                    <i className="fas fa-plus fa-xs"/>
-                </button>
-            </a>
-        </li>
-    </ul>;
+class ModuleListComponent extends React.Component {
+
+    componentDidMount() {
+        this.props.findModulesForCourse()
+    }
+
+    render() {
+        return (
+            <ul className="nav flex-column nav-pills pt-3 wbdv-module-list">
+                {
+                    this.props.modules && this.props.modules.map(module =>
+                        <ModuleItemComponent module = {module} deleteModule={this.props.deleteModule}/>
+                    )
+                }
+                <li className="bg-dark">
+                    <a href="#" className="nav-link">
+                        <button onClick={() => this.props.createModule({title: 'New Module'})}
+                                className="btn float-right btn-add-module wbdv-module-item-add-btn">
+                            <i className="fas fa-plus fa-xs"/>
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        )
+    }
+}
+
 
 const stateToPropertyMapper = (state) => {
     return { modules: state.modules };
@@ -25,19 +41,25 @@ const stateToPropertyMapper = (state) => {
 
 const dispatchToPropertyMapper = dispatch => {
     return {
-        deleteModule: moduleId => {
-            dispatch({
-                type: DELETE_MODULE,
-                moduleId
-            })
+        findModulesForCourse: () => {
+            moduleService.findModulesForCourse("4EudFNiWn0Ov0tJz")
+                .then(actualModules =>
+                    dispatch({
+                        type: FIND_MODULES_FOR_COURSE,
+                        modules: actualModules
+                    }))
         },
-        createModule: (title) => {
-            dispatch(
-                {
-                    type: CREATE_MODULE,
-                    newModule: {title: title, _id: "1234"}
-                }
-            )
+        deleteModule: moduleId => {
+            moduleService.deleteModule(moduleId)
+                .then(response =>
+                    dispatch(deleteModule(moduleId))
+                )
+        },
+        createModule: (module) => {
+            moduleService.createModule(module)
+                .then(response =>
+                    dispatch(createModule(module))
+                )
         }
     };
 };
