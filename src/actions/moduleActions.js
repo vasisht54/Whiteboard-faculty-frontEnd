@@ -1,0 +1,3 @@
+export const CREATE_MODULE = "CREATE_MODULE";
+
+export const DELETE_MODULE = "DELETE_MODULE";

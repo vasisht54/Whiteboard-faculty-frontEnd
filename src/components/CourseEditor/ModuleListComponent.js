@@ -1,6 +1,7 @@
 import React from "react";
 import ModuleItemComponent from "./ModuleItemComponent";
 import connect from "react-redux/lib/connect/connect";
+import {CREATE_MODULE, DELETE_MODULE} from "../../actions/moduleActions";
 
 const ModuleListComponent = ({modules, createModule, deleteModule}) =>
     <ul className="nav flex-column nav-pills pt-3 wbdv-module-list">
@@ -26,14 +27,14 @@ const dispatchToPropertyMapper = dispatch => {
     return {
         deleteModule: moduleId => {
             dispatch({
-                type: "DELETE_MODULE",
+                type: DELETE_MODULE,
                 moduleId
             })
         },
         createModule: (title) => {
             dispatch(
                 {
-                    type: "CREATE_MODULE",
+                    type: CREATE_MODULE,
                     newModule: {title: title, _id: "1234"}
                 }
             )

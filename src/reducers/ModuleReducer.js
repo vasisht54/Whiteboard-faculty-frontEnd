@@ -1,3 +1,5 @@
+import {CREATE_MODULE, DELETE_MODULE} from "../actions/moduleActions";
+
 const initialState = {
     lessons: [],
     topics: [],
@@ -11,7 +13,7 @@ const initialState = {
 const moduleReducer = (state = initialState, action) => {
 
     switch(action.type) {
-        case 'CREATE_MODULE':
+        case CREATE_MODULE :
             return {
                 modules: [
                     ...state.modules,
@@ -19,7 +21,7 @@ const moduleReducer = (state = initialState, action) => {
                 ]
             };
 
-        case 'DELETE_MODULE':
+        case DELETE_MODULE:
             return {
                 modules: state.modules.filter(module => module._id !== action.moduleId)
             };
