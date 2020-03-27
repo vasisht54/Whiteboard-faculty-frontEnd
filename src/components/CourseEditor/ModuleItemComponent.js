@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 class ModuleItemComponent extends React.Component {
     state = {
@@ -21,7 +22,7 @@ class ModuleItemComponent extends React.Component {
                     title
                 }
             }, function () {
-                console.log("onchng", this.state.module)
+         /*       console.log("onchng", this.state.module)*/
             }
         )
     }
@@ -29,9 +30,12 @@ class ModuleItemComponent extends React.Component {
         return (
             <li className="nav-item bg-dark pl-3 wbdv-module-item">
                 {   !this.state.editing ?
-                    <a href="#" className="nav-link list-group-item my-2 font-weight-bolder wbdv-module-item-title">
-                        {this.state.module.title}
-                        <button onClick={() => this.setState(
+                    /*<a className="nav-link list-group-item my-2 font-weight-bolder wbdv-module-item-title">*/
+                    <div className="nav-link list-group-item my-2 font-weight-bolder wbdv-module-item-title">
+                        <Link to={`/course-editor/${this.props.match.params.courseId}/modules/${this.props.module._id}`}>
+                            {this.state.module.title}
+                        </Link>
+                        <button className="float-right" onClick={() => this.setState(
                             prevState => {
                                 return {
                                     ...prevState,
@@ -41,7 +45,7 @@ class ModuleItemComponent extends React.Component {
                         )}>
                             <i className="fas fa-pencil-alt"/>
                         </button>
-                    </a>
+                    </div>
                     :
                     <div>
                     <input

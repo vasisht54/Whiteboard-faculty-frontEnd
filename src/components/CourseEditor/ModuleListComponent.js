@@ -19,12 +19,17 @@ class ModuleListComponent extends React.Component {
             <ul className="nav flex-column nav-pills pt-3 wbdv-module-list">
                 {
                     this.props.modules && this.props.modules.map(module =>
-                        <ModuleItemComponent key={module._id} module = {module} editModule={this.props.editModule} deleteModule={this.props.deleteModule}/>
+                        <ModuleItemComponent {...this.props} key={module._id}
+                                             module = {module}
+                                             editModule={this.props.editModule}
+                                             deleteModule={this.props.deleteModule}/>
                     )
                 }
                 <li className="bg-dark" key={this.props.match.params.courseId}>
                     <a href="#" className="nav-link">
-                        <button onClick={() => this.props.createModule(this.props.match.params.courseId, {title: 'New Module'})}
+                        <button onClick={() =>
+                            this.props.createModule(this.props.match.params.courseId,
+                            {title: 'New Module'})}
                                 className="btn float-right btn-add-module wbdv-module-item-add-btn">
                             <i className="fas fa-plus fa-xs"/>
                         </button>

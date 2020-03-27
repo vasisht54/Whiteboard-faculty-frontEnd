@@ -4,10 +4,10 @@ import WidgetListComponent from "./WidgetListComponent";
 import HeadingWidgetComponent from "./HeadingWidgetComponent";
 import LessonListComponent from "./LessonListComponent";
 
-const MainContentComponent = () =>
+const MainContentComponent = (props) =>
 
     <div className="container svms-main-content">
-        <LessonListComponent />
+        <LessonListComponent {...props}/>
         <br />
         <TopicListComponent />
 
