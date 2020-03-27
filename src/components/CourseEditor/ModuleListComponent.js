@@ -3,51 +3,49 @@ import ModuleItemComponent from "./ModuleItemComponent";
 import connect from "react-redux/lib/connect/connect";
 import {
     createModule,
-    deleteModule, FIND_MODULES_FOR_COURSE
+    deleteModule, editModule, FIND_MODULES_FOR_COURSE, findModulesForCourse
 } from "../../actions/moduleActions";
 import moduleService from "../../services/ModuleService";
 
 class ModuleListComponent extends React.Component {
 
     componentDidMount() {
-        this.props.findModulesForCourse()
+        this.props.findModulesForCourse(this.props.match.params.courseId);
     }
+
 
     render() {
         return (
             <ul className="nav flex-column nav-pills pt-3 wbdv-module-list">
                 {
                     this.props.modules && this.props.modules.map(module =>
-                        <ModuleItemComponent module = {module} deleteModule={this.props.deleteModule}/>
+                        <ModuleItemComponent key={module._id} module = {module} editModule={this.props.editModule} deleteModule={this.props.deleteModule}/>
                     )
                 }
-                <li className="bg-dark">
+                <li className="bg-dark" key={this.props.match.params.courseId}>
                     <a href="#" className="nav-link">
-                        <button onClick={() => this.props.createModule({title: 'New Module'})}
+                        <button onClick={() => this.props.createModule(this.props.match.params.courseId, {title: 'New Module'})}
                                 className="btn float-right btn-add-module wbdv-module-item-add-btn">
                             <i className="fas fa-plus fa-xs"/>
                         </button>
-                    </a>
-                </li>
-            </ul>
+                    </a></li>
+            </
+                ul>
         )
     }
 }
 
 
 const stateToPropertyMapper = (state) => {
-    return { modules: state.modules };
+    return { modules: state.modules.modules };
 };
 
 const dispatchToPropertyMapper = dispatch => {
     return {
-        findModulesForCourse: () => {
-            moduleService.findModulesForCourse("4EudFNiWn0Ov0tJz")
+        findModulesForCourse: (courseId) => {
+            moduleService.findModulesForCourse(courseId)
                 .then(actualModules =>
-                    dispatch({
-                        type: FIND_MODULES_FOR_COURSE,
-                        modules: actualModules
-                    }))
+                    dispatch(findModulesForCourse(actualModules)))
         },
         deleteModule: moduleId => {
             moduleService.deleteModule(moduleId)
@@ -55,10 +53,23 @@ const dispatchToPropertyMapper = dispatch => {
                     dispatch(deleteModule(moduleId))
                 )
         },
-        createModule: (module) => {
-            moduleService.createModule(module)
+        createModule: (courseId, module) => {
+            moduleService.createModule(courseId, module)
                 .then(response =>
-                    dispatch(createModule(module))
+                    dispatch(createModule(response))
+                )
+        },
+        editModule: (module) => {
+            console.log(module);
+            moduleService.updateModule(module._id, module)
+                .then(response =>
+                    moduleService.findModulesForCourse(module._courses)
+                        .then(actualModules => {
+                                console.log("inside editModule",actualModules)
+                                dispatch(findModulesForCourse(actualModules))
+                            }
+                        )
+
                 )
         }
     };

@@ -6,25 +6,21 @@ class CourseRowComponent extends React.Component {
         editing: false
     };
 
-
     render() {
         return(
             <tr key={this.props.course._id} className="wbdv-row wbdv-course">
                 {   !this.state.editing ?
                     <td scope="row">
                         <i className="fas fa-file-alt wbdv-row wbdv-icon"/>&nbsp;&nbsp;
-                        <a className="wbdv-bold wbdv-row wbdv-title"
-                           onClick={this.props.showEditor} href="#">
+                        <Link to={`/course-editor/${this.props.course._id}`}>
                             {this.props.course.title}
-                        </a>
-                        {/*<Link to="courses/:courseId">
-                            {this.props.course.title}
-                        </Link>*/}
+                        </Link>
                     </td>
                              :
                     <td>
                         <i className="fas fa-file-alt wbdv-row wbdv-icon"/>
-                        <input onChange={(e) => this.props.onTextEntry(e.target.value)}
+                        <input
+                            onChange={(e) => this.props.onTextEntry(e.target.value)}
                                className="form-control w-75"/>
                     </td>
                 }

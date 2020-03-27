@@ -13,4 +13,18 @@ export const deleteModule = (moduleId) => (
     }
 );
 
+export const EDIT_MODULE = "EDIT_MODULE";
+export const editModule = moduleId => (
+    {
+        type: EDIT_MODULE,
+        moduleId
+    }
+);
+
 export const FIND_MODULES_FOR_COURSE = 'FIND_MODULES_FOR_COURSE';
+export const findModulesForCourse = modules => (
+    {
+        type: FIND_MODULES_FOR_COURSE,
+        modules
+    }
+);

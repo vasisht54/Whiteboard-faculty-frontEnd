@@ -1,12 +1,12 @@
 import React from "react";
 import TopicPillComponent from "./TopicPillComponent";
 
-const TopicListComponent = ({topics}) =>
-    <ul className="nav nav-pills navbar-expand-md wbdv-topic-pill-list">
+const TopicListComponent = (/*{topics}*/) => <div></div>
+    /*<ul className="nav nav-pills navbar-expand-md wbdv-topic-pill-list">
         {
             topics.map(topic =>
                 <TopicPillComponent topic = {topic} />
             )
         }
-    </ul>;
+    </ul>;*/
 export default TopicListComponent;

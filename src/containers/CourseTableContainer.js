@@ -64,7 +64,6 @@ class CourseTableContainer extends React.Component {
                           updatedCourseTitle = {this.state.updatedCourseTitle}
                           onTextEntry = {this.onTextEntry}
                           editCourse = {this.editCourse}
-                          showEditor = {this.props.showEditor}
                           deleteCourse = {this.deleteCourse}
                           courses = {this.state.courses}/>
                   </table>

@@ -1,13 +1,7 @@
 import {CREATE_MODULE, DELETE_MODULE, FIND_MODULES_FOR_COURSE} from "../actions/moduleActions";
 
 const initialState = {
-    lessons: [],
-    topics: [],
-    modules: [
-        {_id: "123", title: "Module 1"},
-        {_id: "234", title: "Module 3"},
-        {_id: "345", title: "Module 2"}
-    ]
+    modules: []
 };
 
 const moduleReducer = (state = initialState, action) => {

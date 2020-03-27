@@ -5,7 +5,7 @@ const NavListComponent = ({navTabs}) =>
     <ul className="nav nav-pills">
         {
             navTabs.map(navTab =>
-                    <NavTabComponent navTab={navTab} />
+                    <NavTabComponent key={navTab._id} navTab={navTab} />
             )
         }
     </ul>;

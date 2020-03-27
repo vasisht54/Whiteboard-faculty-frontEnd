@@ -1,9 +1,8 @@
 import React from "react";
-import CourseTableContainer from "./CourseTableContainer";
-import CourseGridContainer from "./CourseGridContainer";
-import CourseListHeaderComponent from "../components/CourseManager/CourseListHeaderComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
 import {createCourse, findAllCourses} from "../services/CourseService";
+import CourseListComponent from "../components/CourseListComponent";
+import {BrowserRouter, Route} from "react-router-dom";
 
 class CourseManagerContainer extends React.Component {
     state = {
@@ -12,7 +11,6 @@ class CourseManagerContainer extends React.Component {
         courses: [],
         showEditor: false
     };
-
 
     componentDidMount() {
 
@@ -53,100 +51,31 @@ class CourseManagerContainer extends React.Component {
         })
     };
 
-    showEditor = () =>
-        this.setState({
-            showEditor: true
-        });
-
-    closeEditor = () =>
-        this.setState({
-            showEditor: false
-        });
-
     render() {
         return (
-            /*<Provider store={store}>*/
             <div>
-               {/* <Router>
-                    {
-                        !this.state.showEditor &&
-                        <div>
-                            <CourseListHeaderComponent onTextEntry={this.onTextEntry} addCourse={this.addCourse}/>
-                            <div className="float-right">
-                                <Link to="/course-list/grid">
-                                    <button onClick={this.setGrid}
-                                            className="btn wbdv-button wbdv-grid-layout wbdv-button wbdv-list-layout">
-                                        <i className="fas fa-th"/>
-                                    </button>
-                                </Link>
-                                &nbsp;&nbsp;&nbsp;
-                                <Link to="/course-list/table">
-                                    <button onClick={this.setTable}
-                                            className="btn wbdv-button wbdv-table-layout wbdv-list-layout">
-                                        <i className="fas fa-list-ul"/>
-                                    </button>
-                                </Link>
-                            </div>
 
-                            <Route path="/table"
-                                   exact={true}
-                                   render=
-                                       {() =>
-                                           <CourseTableContainer
+                <BrowserRouter>
+                <Route path ="/"
+                       exact={true}
+                       render={(props) =>
+                    <CourseListComponent onTextEntry = {this.onTextEntry}
+                                         {...props}
+                                         addCourse = {this.addCourse}
+                                         setGrid = {this.setGrid}
+                                         layout = {this.state.layout}
+                                         courses = {this.state.courses}
+                                         setTable = {this.setTable}
+                    />
+                }/>
 
-                                               showEditor={this.showEditor}
-                                               courses={this.state.courses}
-                                           />
-                                       }
-                            />
-                            <Route path="/grid"
-                                   exact={true}
-                                   render=
-                                       {() =>
-                                           <CourseGridContainer
-
-                                               courses={this.state.courses}
-                                               showEditor={this.showEditor}
-                                           />
-                                       }
-                            />
-                        </div>
-                    }
-                    {
-                        this.state.showEditor &&
-                        <CourseEditorComponent closeEditor={this.closeEditor} />
-                    }
-
-                </Router>*/}
-                {
-                    !this.state.showEditor &&
-                    <div>
-                        <CourseListHeaderComponent onTextEntry={this.onTextEntry} addCourse={this.addCourse}/>
-                        <div className="float-right">
-                            <button onClick={this.setGrid} className="btn wbdv-button wbdv-grid-layout wbdv-button wbdv-list-layout">
-                                <i className="fas fa-th"/>
-                            </button>
-                            &nbsp;&nbsp;&nbsp;
-                            <button onClick={this.setTable} className="btn wbdv-button wbdv-table-layout wbdv-list-layout">
-                                <i className="fas fa-list-ul"/>
-                            </button>
-                        </div>
-                        {
-                            this.state.layout === 'table' &&
-                            <CourseTableContainer  showEditor={this.showEditor} courses={this.state.courses}/>
-                        }
-                        {
-                            this.state.layout === 'grid' &&
-                            <CourseGridContainer courses={this.state.courses} showEditor={this.showEditor}/>
-                        }
-                    </div>
-                }
-                {
-                    this.state.showEditor &&
-                    <CourseEditorComponent closeEditor = {this.closeEditor}  />
-                }
+                <Route
+                        path="/course-editor/:courseId"
+                        exact = {true}
+                        render={(props) => <CourseEditorComponent {...props}/>
+                    }/>
+                </BrowserRouter>
             </div>
-            /*</Provider>*/
         )
     }
 }
