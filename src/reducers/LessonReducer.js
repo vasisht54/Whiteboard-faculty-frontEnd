@@ -1,17 +1,3 @@
-/*
-const lessonReducer = (state, action) => {
-    return {
-        lessons: [
-            {title: "Lesson 1", _id: "123"},
-            {title: "Lesson 2", _id: "234"},
-            {title: "Lesson 3", _id: "345"},
-            {title: "Lesson 4", _id: "456"}
-        ]
-    }
-};
-*/
-
-
 import {CREATE_LESSON, DELETE_LESSON, FIND_LESSONS_FOR_MODULE} from "../actions/lessonActions";
 
 const initialState = {

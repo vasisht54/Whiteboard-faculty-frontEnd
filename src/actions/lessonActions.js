@@ -5,7 +5,7 @@ export const createLesson = (lesson) => ({
     }
 );
 
-export const DELETE_LESSON = "DELETE_MODULE";
+export const DELETE_LESSON = "DELETE_LESSON";
 export const deleteLesson = (lessonId) => (
     {
         type: DELETE_LESSON,
@@ -13,7 +13,7 @@ export const deleteLesson = (lessonId) => (
     }
 );
 
-export const EDIT_LESSON = "EDIT_MODULE";
+export const EDIT_LESSON = "EDIT_LESSON";
 export const editLesson = lessonId => (
     {
         type: EDIT_LESSON,
