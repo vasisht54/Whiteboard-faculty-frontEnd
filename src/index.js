@@ -7,10 +7,12 @@ import {combineReducers, createStore} from "redux";
 import Provider from "react-redux/lib/components/Provider";
 import moduleReducer from "./reducers/ModuleReducer";
 import lessonReducer from "./reducers/LessonReducer";
+import topicReducer from "./reducers/TopicReducer";
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
-    lessons: lessonReducer
+    lessons: lessonReducer,
+    topics: topicReducer
 });
 
 const store = createStore(rootReducer);

@@ -20,9 +20,9 @@ const deleteLesson = async (lessonId) => {
 
 const createLesson = async (moduleId, lesson) =>
 {
-    const response = await fetch(`${API_URL}/modules/${moduleId}/modules`, {
+    const response = await fetch(`${API_URL}/modules/${moduleId}/lessons`, {
         method: "POST",
-        body: JSON.stringify(module),
+        body: JSON.stringify(lesson),
         headers: {
             'content-type': 'application/json'
         }
@@ -31,7 +31,7 @@ const createLesson = async (moduleId, lesson) =>
 };
 
 const findLessonsForModule = async(moduleId) => {
-    const response = await fetch(`${API_URL}/modules/${moduleId}/modules`);
+    const response = await fetch(`${API_URL}/modules/${moduleId}/lessons`);
     return await response.json();
 };
 

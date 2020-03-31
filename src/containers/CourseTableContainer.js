@@ -1,8 +1,7 @@
 import React from "react";
 import CourseTableHeadComponent from "../components/CourseManager/CourseTableHeadComponent";
 import CourseTableBodyComponent from "../components/CourseManager/CourseTableBodyComponent";
-import {deleteCourse, findAllCourses, updateCourse} from "../services/CourseService";
-import CourseCardListComponent from "./CourseCardListComponent";
+import courseService from "../services/CourseService";
 
 class CourseTableContainer extends React.Component {
 
@@ -21,9 +20,9 @@ class CourseTableContainer extends React.Component {
 
     deleteCourse = (course) =>
         this.setState(prevState => {
-            deleteCourse(course._id)
+            courseService.deleteCourse(course._id)
                 .then(() => {
-                    findAllCourses()
+                    courseService.findAllCourses()
                         .then(courses => {
                             this.setState({
                                               courses: courses
@@ -35,9 +34,9 @@ class CourseTableContainer extends React.Component {
 
     editCourse = (course) =>
         this.setState(prevState => {
-            updateCourse(course._id, {title: prevState.updatedCourseTitle, ownedBy: "me"})
+            courseService.updateCourse(course._id, {title: prevState.updatedCourseTitle, ownedBy: "me"})
                 .then(() => {
-                    findAllCourses()
+                    courseService.findAllCourses()
                         .then(courses => {
                             this.setState({
                                 courses: courses

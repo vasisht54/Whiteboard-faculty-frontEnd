@@ -16,7 +16,7 @@ class CourseCardListComponent extends React.Component {
         }
     }
 
-    editCourse = (course) =>
+   /* editCourse = (course) =>
         this.setState(prevState => {
             updateCourse(course._id, {title: prevState.updatedCourseTitle, ownedBy: "me"})
                 .then(() => {
@@ -47,7 +47,7 @@ class CourseCardListComponent extends React.Component {
                                           })
                         })
                 })
-        });
+        });*/
 
     render(){
         return(
@@ -57,11 +57,10 @@ class CourseCardListComponent extends React.Component {
                     {
                         this.state.courses.map(course =>
                             <CourseCardComponent
-                                deleteCourse = {this.deleteCourse}
+                                deleteCourse = {this.props.deleteCourse}
                                 course = {course}
-                                showEditor={this.props.showEditor}
-                                onTextEntry = {this.onTextEntry}
-                                editCourse = {this.editCourse}
+                                onTextEntry = {this.props.onTextEntry}
+                                editCourse = {this.props.editCourse}
                             />
                         )
                     }

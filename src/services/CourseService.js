@@ -39,3 +39,11 @@ export const findCourseById = async(id) => {
     const response = await fetch(`${API_URL}/courses/${id}`);
     return await response.json();
 };
+
+export default {
+    findCourseById,
+    findAllCourses,
+    deleteCourse,
+    createCourse,
+    updateCourse
+}

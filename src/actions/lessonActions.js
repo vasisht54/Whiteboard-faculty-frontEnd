@@ -22,9 +22,9 @@ export const editLesson = lessonId => (
 );
 
 export const FIND_LESSONS_FOR_MODULE = 'FIND_LESSONS_FOR_MODULE';
-export const findLessonsForModule = modules => (
-    {
+export const findLessonsForModule = (lessons) => {
+    return {
         type: FIND_LESSONS_FOR_MODULE,
-        modules
+        lessons
     }
-);
+};

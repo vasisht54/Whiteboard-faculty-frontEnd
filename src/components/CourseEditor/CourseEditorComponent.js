@@ -9,11 +9,11 @@ class CourseEditorComponent extends React.Component {
     render() {
         return (
             <div className="container-fullwidth">
-                <NavBarMainComponent {...this.props}/>
+                <NavBarMainComponent history = {this.props.history}/>
                 <div className="row">
-                    <SideBarComponent {...this.props}/>
+                    <SideBarComponent {...this.props} {...this.props.courseId}/>
                     <div className="col-9">
-                        <MainContentComponent {...this.props}/>
+                        <MainContentComponent {...this.props} {...this.props.moduleId}/>
                     </div>
                 </div>
             </div>

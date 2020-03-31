@@ -3,6 +3,7 @@ import CourseEditorComponent from "../components/CourseEditor/CourseEditorCompon
 import {createCourse, findAllCourses} from "../services/CourseService";
 import CourseListComponent from "../components/CourseListComponent";
 import {BrowserRouter, Route} from "react-router-dom";
+import "../styles/course-editor.style.client.css"
 
 class CourseManagerContainer extends React.Component {
     state = {
@@ -72,13 +73,39 @@ class CourseManagerContainer extends React.Component {
                 <Route
                     path="/course-editor/:courseId"
                     exact={true}
-                    render={(props) => <CourseEditorComponent {...props}/>
+                    render={(props) => <CourseEditorComponent {...props} courseId={props.match.params.courseId}/>
                     }/>
+
                 <Route
                     path = "/course-editor/:courseId/modules/:moduleId"
                     exact={true}
-                    render={(props) => <CourseEditorComponent {...props}/>
+                    render={(props) => <CourseEditorComponent
+                            {...props}
+                        courseId = {props.match.params.courseId}
+                        moduleId = {props.match.params.moduleId}
+                    />
                     }/>
+                <Route
+                    path = "/course-editor/:courseId/modules/:moduleId/lessons/:lessonId"
+                    exact={true}
+                    render={(props) => <CourseEditorComponent
+                            {...props}
+                        courseId = {props.match.params.courseId}
+                        moduleId = {props.match.params.moduleId}
+                        lessonId = {props.match.params.lessonId}
+                    />
+                    }/>
+                <Route
+                    path = "/course-editor/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"
+                    exact={true}
+                    render = {(props) => <CourseEditorComponent
+                        {...props}
+                    courseId = {props.match.params.courseId}
+                    moduleId = {props.match.params.moduleId}
+                    lessonId = {props.match.params.lessonId}
+                    topicId = {props.match.params.topicId}
+                />
+            }/>
                 </BrowserRouter>
             </div>
         )

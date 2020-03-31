@@ -22,7 +22,7 @@ export const editTopic = topicId => (
 );
 
 export const FIND_TOPICS_FOR_LESSON = 'FIND_TOPICS_FOR_LESSON';
-export const findTopicsForModule = topics => (
+export const findTopicsForLesson = topics => (
     {
         type: FIND_TOPICS_FOR_LESSON,
         topics

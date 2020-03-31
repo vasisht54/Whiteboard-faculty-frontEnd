@@ -1,9 +1,11 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 class CourseCardComponent extends React.Component {
 
     state = {
-        editing: false
+        editing: false,
+        course: this.props.course
     };
 
     render() {
@@ -12,9 +14,9 @@ class CourseCardComponent extends React.Component {
                 <div className="card-body">
                     <div>
                         {   !this.state.editing ?
-                            <a href="#" onClick={this.props.showEditor} className="card-title h6 font-weight-bold">
-                                {this.props.course.title}
-                            </a>
+                            <Link to={`/course-editor/${this.props.course._id}`}>
+                                {this.state.course.title}
+                            </Link>
                             :
                             <input onChange={(e) =>
                                                 this.props.onTextEntry(e.target.value)

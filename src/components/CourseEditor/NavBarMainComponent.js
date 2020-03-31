@@ -1,10 +1,10 @@
 import React from "react";
 import NavListComponent from "./NavListComponent";
 
-const NavBarMainComponent = (props) =>
+const NavBarMainComponent = ({history}) =>
     <div className="wbdv-navbar">
-        <nav className="navbar navbar-dark navbar-expand-md">
-            <button onClick={() => props.history.push("/")} className="btn wbdv-course-editor wbdv-close wbdv-bold">
+        <nav className="navbar navbar-dark navbar-expand-md" >
+            <button onClick={() => history.push("/")} className="btn wbdv-course-editor wbdv-close wbdv-bold">
                 X
             </button>
             &nbsp;<a className="navbar-brand wbdv-bold wbdv-course-title" href="#">CS5610 - WebDev</a>

@@ -39,3 +39,11 @@ export const findTopic = async(topicId) => {
     const response = await fetch(`${API_URL}/topics/${topicId}`);
     return await response.json();
 };
+
+export default {
+    findTopic,
+    findTopicsForLesson,
+    createTopic,
+    deleteTopic,
+    updateTopic
+}

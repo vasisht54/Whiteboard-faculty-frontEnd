@@ -9,7 +9,7 @@ const MainContentComponent = (props) =>
     <div className="container svms-main-content">
         <LessonListComponent {...props}/>
         <br />
-        <TopicListComponent />
+        <TopicListComponent {...props}/>
 
         <WidgetListComponent />
 
