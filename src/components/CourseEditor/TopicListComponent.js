@@ -3,8 +3,6 @@ import TopicPillComponent from "./TopicPillComponent";
 import topicService from "../../services/TopicService";
 import {createTopic, deleteTopic, findTopicsForLesson} from "../../actions/topicActions";
 import connect from "react-redux/lib/connect/connect";
-import LessonTabComponent from "./LessonTabComponent";
-
 class TopicListComponent extends React.Component {
 
     componentDidMount() {

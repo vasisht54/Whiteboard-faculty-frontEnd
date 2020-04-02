@@ -1,8 +1,9 @@
 import React from "react";
 import TopicListComponent from "./TopicListComponent";
-import WidgetListComponent from "./WidgetListComponent";
+import WidgetUtilityButtons from "./WidgetUtilityButtons";
 import HeadingWidgetComponent from "./HeadingWidgetComponent";
 import LessonListComponent from "./LessonListComponent";
+import WidgetListComponent from "./WidgetListComponent";
 
 const MainContentComponent = (props) =>
 
@@ -11,10 +12,10 @@ const MainContentComponent = (props) =>
         <br />
         <TopicListComponent {...props}/>
 
-        <WidgetListComponent />
+        <WidgetUtilityButtons />
 
         <div className="row m-3">
-          <HeadingWidgetComponent/>
+          <WidgetListComponent />
         </div>
 
         <div className="float-right">

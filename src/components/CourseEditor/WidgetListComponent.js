@@ -1,17 +1,20 @@
 import React from "react";
+import connect from "react-redux/lib/connect/connect";
 
-const WidgetListComponent = () =>
-    <div className="container svms-misc-buttons">
-        <div className="row">
-            <div className="col-7"/>
-            <div className="col-5">
-                <button id="PreviewToggleBtn" className="float-right btn d-inline-flex toggle-btn">
-                    <h5>Preview &nbsp;</h5>
-                    <i className="fas align-middle fa-toggle-off fa-2x"/>
-                </button>
-                <button className="btn btn-success float-right">Save</button>
-            </div>
-        </div>
+const WidgetListComponent = ({widgets}) =>
+    <div>
+        <h1>Widget List</h1>
+        {
+            widgets.map(widget =>
+                <li key={widget._id}>
+                    {widget.title}
+                </li>
+            )
+        }
     </div>;
 
-export default WidgetListComponent;
+const stateToPropertyMapper = (state) => ({
+    widgets: state.widgets.widgets
+});
+
+export default connect(stateToPropertyMapper)(WidgetListComponent)
