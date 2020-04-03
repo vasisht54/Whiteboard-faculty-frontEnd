@@ -1,7 +1,7 @@
 import React from "react";
 import TopicListComponent from "./TopicListComponent";
 import WidgetUtilityButtons from "./WidgetUtilityButtons";
-import HeadingWidgetComponent from "./HeadingWidgetComponent";
+import HeadingWidgetComponent from "./widgets/HeadingWidgetComponent";
 import LessonListComponent from "./LessonListComponent";
 import WidgetListComponent from "./WidgetListComponent";
 

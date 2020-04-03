@@ -29,15 +29,7 @@ const dispatchToPropertyMapper = dispatch => ({
         fetch(`http://localhost:8080/api/topics/${tid}/widgets`)
             .then(response => response.json())
             .then(widgets => dispatch({
-                    type: "FIND_ALL_WIDGETS",
-                    widgets: widgets
-                })
-            ),
-    findAllWidgets: () =>
-        fetch("http://localhost:8080/api/widgets")
-            .then(response => response.json())
-            .then(widgets => dispatch({
-                    type: "FIND_ALL_WIDGETS",
+                    type: "FIND_WIDGETS_FOR_TOPIC",
                     widgets: widgets
                 })
             )
