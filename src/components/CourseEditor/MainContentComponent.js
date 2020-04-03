@@ -15,7 +15,7 @@ const MainContentComponent = (props) =>
         <WidgetUtilityButtons />
 
         <div className="row m-3">
-          <WidgetListComponent />
+          <WidgetListComponent {...props}/>
         </div>
 
         <div className="float-right">

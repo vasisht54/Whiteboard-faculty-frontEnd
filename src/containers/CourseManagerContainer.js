@@ -14,7 +14,6 @@ class CourseManagerContainer extends React.Component {
     };
 
     componentDidMount() {
-
         findAllCourses()
             .then(courses => {
                 this.setState({

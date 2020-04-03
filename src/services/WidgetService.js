@@ -49,3 +49,11 @@ export default {
     updateTopic
 }*/
 
+const findWidgetsForTopic = async(topicId) => {
+    const response = await fetch(`http://localhost:3000/course-editor/5e82c1ef6210ee0017ae18a6/modules/5e82c3c06210ee0017ae18ad/lessons/5e82c4206210ee0017ae18b3/topics/${topicId}/widgets`);
+    return await response.json();
+};
+
+export default {
+    findWidgetsForTopic
+}

@@ -7,7 +7,7 @@ import {createLesson, deleteLesson, findLessonsForModule} from "../../actions/le
 class LessonListComponent extends React.Component {
 
     componentDidMount() {
-        this.props.findLessonsForModule1(this.props.moduleId);
+        this.props.findLessonsForModule(this.props.moduleId);
     }
 
     render() {
@@ -38,7 +38,7 @@ const stateToPropertyMapper = (state) => {
 
 const dispatchToPropertyMapper = (dispatch) => {
     return {
-        findLessonsForModule1: async(moduleId) => {
+        findLessonsForModule: async(moduleId) => {
             const actualLessons = await lessonService.findLessonsForModule(moduleId);
             dispatch(findLessonsForModule(actualLessons));
         },

@@ -1,29 +1,38 @@
 import React from "react";
 import connect from "react-redux/lib/connect/connect";
+import WidgetItemComponent from "./WidgetItemComponent";
 
 class WidgetListComponent extends React.Component {
 
     componentDidMount() {
-        this.props.findAllWidgets();
+        this.props.findWidgetsForTopic(this.props.topicId);
     }
 
     render() {
         return(
             <div>
                 <h1>Widget List</h1>
-                {
+                <ul>
+                    {
                     this.props.widgets.map(widget =>
-                        <li key={widget.id}>
-                            {widget.title}
-                        </li>
-                    )
-                }
+                        <WidgetItemComponent widget = {widget}/>
+                    )}
+                </ul>
             </div>
     )
     }
 }
 
 const dispatchToPropertyMapper = dispatch => ({
+
+    findWidgetsForTopic: (tid) =>
+        fetch(`http://localhost:8080/api/topics/${tid}/widgets`)
+            .then(response => response.json())
+            .then(widgets => dispatch({
+                    type: "FIND_ALL_WIDGETS",
+                    widgets: widgets
+                })
+            ),
     findAllWidgets: () =>
         fetch("http://localhost:8080/api/widgets")
             .then(response => response.json())
@@ -38,4 +47,4 @@ const stateToPropertyMapper = (state) => ({
     widgets: state.widgets.widgets
 });
 
-export default connect(stateToPropertyMapper)(WidgetListComponent)
+export default connect(stateToPropertyMapper, dispatchToPropertyMapper)(WidgetListComponent)

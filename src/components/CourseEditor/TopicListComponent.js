@@ -3,6 +3,8 @@ import TopicPillComponent from "./TopicPillComponent";
 import topicService from "../../services/TopicService";
 import {createTopic, deleteTopic, findTopicsForLesson} from "../../actions/topicActions";
 import connect from "react-redux/lib/connect/connect";
+import widgetService from "../../services/WidgetService";
+
 class TopicListComponent extends React.Component {
 
     componentDidMount() {
@@ -64,6 +66,11 @@ const dispatchToPropertyMapper = dispatch => {
                             }
                         )
                 )
+        },
+        findWidgetsForTopic: (topicId) => {
+            widgetService.findWidgetsForTopic(topicId)
+                .then(actualWidgets =>
+                    dispatch(findWidgetsForTopic(actualWidgets)))
         }
     };
 };

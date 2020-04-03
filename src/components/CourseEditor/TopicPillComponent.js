@@ -16,6 +16,10 @@ class TopicPillComponent extends React.Component {
         }
     }
 
+    findWidgets = () => {
+        this.props.findWidgetsForTopic(this.state.topic._id);
+    }
+
     onTextEntry = (title) => {
         this.setState({
                 topic: {
@@ -36,7 +40,7 @@ class TopicPillComponent extends React.Component {
                     !this.state.editing ?
                         <div>
                             <Link to={`/course-editor/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${this.state.topic._id}`}>
-                                <div className="nav-link shadow">{this.state.topic.title}</div>
+                                <div onClick={this.findWidgets} className="nav-link shadow">{this.state.topic.title}</div>
                             </Link>
                             <i onClick={() => this.setState(
                                 prevState => {
