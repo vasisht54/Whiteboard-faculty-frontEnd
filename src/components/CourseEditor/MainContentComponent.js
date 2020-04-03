@@ -16,6 +16,7 @@ const MainContentComponent = (props) =>
 
         <div className="row m-3">
           <WidgetListComponent {...props}/>
+          {/*<HeadingWidgetComponent />*/}
         </div>
 
         <div className="float-right">

@@ -1,6 +1,6 @@
 import React from "react";
 import connect from "react-redux/lib/connect/connect";
-import WidgetItemComponent from "./WidgetItemComponent";
+import WidgetItemComponent from "./widgets/WidgetItemComponent";
 
 class WidgetListComponent extends React.Component {
 
@@ -10,15 +10,12 @@ class WidgetListComponent extends React.Component {
 
     render() {
         return(
-            <div>
-                <h1>Widget List</h1>
-                <ul>
-                    {
-                    this.props.widgets.map(widget =>
-                        <WidgetItemComponent key = {widget._id} widget = {widget}/>
-                    )}
-                </ul>
-            </div>
+            <ul className="container">
+                {
+                this.props.widgets.map(widget =>
+                    <WidgetItemComponent key = {widget._id} widget = {widget}/>
+                )}
+            </ul>
         )
     }
 }
