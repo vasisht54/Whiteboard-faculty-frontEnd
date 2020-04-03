@@ -22,7 +22,7 @@ export const editLesson = lessonId => (
 );
 
 export const FIND_LESSONS_FOR_MODULE = 'FIND_LESSONS_FOR_MODULE';
-export const findLessonsForModule = (lessons) => {
+export const    findLessonsForModule = (lessons) => {
     return {
         type: FIND_LESSONS_FOR_MODULE,
         lessons

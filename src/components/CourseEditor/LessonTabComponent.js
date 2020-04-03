@@ -16,6 +16,9 @@ class LessonTabComponent extends React.Component{
         }
     }
 
+    findTopics = () =>
+        this.props.findTopicsForLesson(this.state.lesson._id);
+
     onTextEntry = (title) => {
         this.setState({
                 lesson: {
@@ -34,7 +37,7 @@ class LessonTabComponent extends React.Component{
                 {
                     !this.state.editing ?
                     <div>
-                        <Link to={`/course-editor/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.state.lesson._id}`}>
+                        <Link onClick={this.findTopics} to={`/course-editor/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.state.lesson._id}`}>
                             {this.state.lesson.title}
                         </Link>
                         &nbsp;&nbsp;

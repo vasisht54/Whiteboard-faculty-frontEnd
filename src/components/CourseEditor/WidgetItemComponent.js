@@ -17,7 +17,7 @@ class widgetItemComponent extends React.Component {
 
     render() {
         return (
-            <li key={this.state.widget.id}>
+            <li>
                 <div>{this.state.widget.title}</div>
             </li>
         )

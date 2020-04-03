@@ -13,11 +13,7 @@ class ModuleListComponent extends React.Component {
 
     componentDidMount() {
         this.props.findModulesForCourse(this.props.courseId);
-        console.log(this.test(4,6));
     }
-
-    test = (a,b) => a+b;
-
 
     render() {
         return (

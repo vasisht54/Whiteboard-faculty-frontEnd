@@ -2,7 +2,9 @@ import React from "react";
 import LessonTabComponent from "./LessonTabComponent";
 import connect from "react-redux/lib/connect/connect";
 import lessonService from "../../services/LessonService";
+import topicService, {findTopic} from "../../services/TopicService"
 import {createLesson, deleteLesson, findLessonsForModule} from "../../actions/lessonActions";
+import {findTopicsForLesson} from "../../actions/topicActions";
 
 class LessonListComponent extends React.Component {
 
@@ -52,6 +54,12 @@ const dispatchToPropertyMapper = (dispatch) => {
             lessonService.createLesson(moduleId, lesson)
                 .then(response =>
                     dispatch(createLesson(response))
+                )
+        },
+        findTopicsForLesson: (lessonId) => {
+            topicService.findTopicsForLesson(lessonId)
+                .then(actualTopics =>
+                    dispatch(findTopicsForLesson(actualTopics))
                 )
         },
         editLesson: (lesson) => {

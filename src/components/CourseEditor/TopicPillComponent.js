@@ -18,7 +18,7 @@ class TopicPillComponent extends React.Component {
 
     findWidgets = () => {
         this.props.findWidgetsForTopic(this.state.topic._id);
-    }
+    };
 
     onTextEntry = (title) => {
         this.setState({
@@ -35,12 +35,11 @@ class TopicPillComponent extends React.Component {
     render() {
         return (
             <li className="nav-item wbdv-topic-pill">
-            {/*    <a className="nav-link shadow" href="#">{this.props.topic.title}</a>*/}
                 {
                     !this.state.editing ?
                         <div>
-                            <Link to={`/course-editor/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${this.state.topic._id}`}>
-                                <div onClick={this.findWidgets} className="nav-link shadow">{this.state.topic.title}</div>
+                            <Link onClick={this.findWidgets} to={`/course-editor/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${this.state.topic._id}`}>
+                                <div className="nav-link shadow">{this.state.topic.title}</div>
                             </Link>
                             <i onClick={() => this.setState(
                                 prevState => {

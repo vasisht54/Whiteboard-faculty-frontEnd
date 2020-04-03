@@ -15,11 +15,11 @@ class WidgetListComponent extends React.Component {
                 <ul>
                     {
                     this.props.widgets.map(widget =>
-                        <WidgetItemComponent widget = {widget}/>
+                        <WidgetItemComponent key = {widget._id} widget = {widget}/>
                     )}
                 </ul>
             </div>
-    )
+        )
     }
 }
 

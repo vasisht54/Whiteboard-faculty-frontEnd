@@ -4,6 +4,7 @@ import topicService from "../../services/TopicService";
 import {createTopic, deleteTopic, findTopicsForLesson} from "../../actions/topicActions";
 import connect from "react-redux/lib/connect/connect";
 import widgetService from "../../services/WidgetService";
+import {findWidgetsForTopic} from "../../actions/widgetActions";
 
 class TopicListComponent extends React.Component {
 
