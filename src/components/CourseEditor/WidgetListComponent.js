@@ -1,6 +1,10 @@
 import React from "react";
 import connect from "react-redux/lib/connect/connect";
 import WidgetItemComponent from "./widgets/WidgetItemComponent";
+import topicService from "../../services/TopicService";
+import widgetService from "../../services/WidgetService";
+import {createTopic, deleteTopic, findTopicsForLesson} from "../../actions/topicActions";
+import {findWidgetsForTopic} from "../../actions/widgetActions";
 
 class WidgetListComponent extends React.Component {
 
@@ -22,15 +26,35 @@ class WidgetListComponent extends React.Component {
 
 const dispatchToPropertyMapper = dispatch => ({
 
-    findWidgetsForTopic: (tid) =>
-        fetch(`http://localhost:8080/api/topics/${tid}/widgets`)
-            .then(response => response.json())
-            .then(widgets => dispatch({
-                    type: "FIND_WIDGETS_FOR_TOPIC",
-                    widgets: widgets
-                })
+    findWidgetsForTopic: (topicId) => {
+        widgetService.findWidgetsForTopic(topicId)
+            .then(actualWidgets =>
+                dispatch(findWidgetsForTopic(actualWidgets))
             )
-})
+    },
+    deleteTopic: topicId => {
+        topicService.deleteTopic(topicId)
+            .then(response =>
+                dispatch(deleteTopic(topicId))
+            )
+    },
+    createTopic: (lessonId, topic) => {
+        topicService.createTopic(lessonId, topic)
+            .then(response =>
+                dispatch(createTopic(response))
+            )
+    },
+    editTopic: (topic) => {
+        topicService.updateTopic(topic._id, topic)
+            .then(response =>
+                topicService.findTopicsForLesson(topic._lessons)
+                    .then(actualTopics => {
+                            dispatch(findTopicsForLesson(actualTopics))
+                        }
+                    )
+            )
+    }
+});
 
 const stateToPropertyMapper = (state) => ({
     widgets: state.widgets.widgets

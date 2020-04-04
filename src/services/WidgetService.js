@@ -1,10 +1,9 @@
-/*
-import {API_URL} from "../common/constants";
+import {WIDGET_SERVICE_API_URL} from "../common/constants";
 
-export const updateTopic = async (topicId, topic) => {
-    const response = await fetch(`${API_URL}/topics/${topicId}`, {
+export const updateWidget = async (widgetId, widget) => {
+    const response = await fetch(`${WIDGET_SERVICE_API_URL}/widgets/${widgetId}`, {
         method: 'PUT',
-        body: JSON.stringify(topic),
+        body: JSON.stringify(widget),
         headers: {
             'content-type': 'application/json'
         }
@@ -12,18 +11,18 @@ export const updateTopic = async (topicId, topic) => {
     return await response.json()
 };
 
-export const deleteTopic = async (topicId) => {
-    const response = await fetch(`${API_URL}/topics/${topicId}`, {
+export const deleteWidget = async (widgetId) => {
+    const response = await fetch(`${WIDGET_SERVICE_API_URL}/widgets/${widgetId}`, {
         method: 'DELETE'
     });
     return await response.json()
 };
 
-export const createTopic = async (lessonId, topic) =>
+export const createWidget = async (topicId, widget) =>
 {
-    const response = await fetch(`${API_URL}/lessons/${lessonId}/topics`, {
+    const response = await fetch(`${WIDGET_SERVICE_API_URL}/topics/${topicId}/widgets`, {
         method: "POST",
-        body: JSON.stringify(topic),
+        body: JSON.stringify(widget),
         headers: {
             'content-type': 'application/json'
         }
@@ -31,29 +30,14 @@ export const createTopic = async (lessonId, topic) =>
     return await response.json()
 };
 
-export const findTopicsForLesson = async(lessonId) => {
-    const response = await fetch(`${API_URL}/lessons/${lessonId}/topics`);
-    return await response.json();
-};
-
-export const findTopic = async(topicId) => {
-    const response = await fetch(`${API_URL}/topics/${topicId}`);
+export const findWidgetsForTopic = async(topicId) => {
+    const response = await fetch(`${WIDGET_SERVICE_API_URL}/topics/${topicId}/widgets`);
     return await response.json();
 };
 
 export default {
-    findTopic,
-    findTopicsForLesson,
-    createTopic,
-    deleteTopic,
-    updateTopic
-}*/
-
-const findWidgetsForTopic = async(topicId) => {
-    const response = await fetch(`http://localhost:3000/course-editor/5e82c1ef6210ee0017ae18a6/modules/5e82c3c06210ee0017ae18ad/lessons/5e82c4206210ee0017ae18b3/topics/${topicId}/widgets`);
-    return await response.json();
-};
-
-export default {
-    findWidgetsForTopic
+    findWidgetsForTopic,
+    createWidget,
+    deleteWidget,
+    updateWidget
 }

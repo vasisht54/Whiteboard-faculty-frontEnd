@@ -27,9 +27,8 @@ class widgetItemComponent extends React.Component {
                 <br />
                 {
                     this.state.widget.type === "PARAGRAPH" &&
-                    <ParagraphWidgetComponent />
+                    <ParagraphWidgetComponent/>
                 }
-                {/*<div>{this.state.widget.title}</div>*/}
             </div>
         )
     }
