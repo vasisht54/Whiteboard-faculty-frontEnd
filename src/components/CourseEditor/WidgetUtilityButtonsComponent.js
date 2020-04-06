@@ -4,7 +4,7 @@ class WidgetUtilityButtonsComponent extends React.Component {
     render() {
         return (
             <div className="container svms-misc-buttons">
-                <div className="row">
+                {/*<div className="row">
                     <div className="col-7"/>
                     <div className="col-5">
                         <label className="switch float-right pt-1">
@@ -15,7 +15,7 @@ class WidgetUtilityButtonsComponent extends React.Component {
                         <h5 className="float-right d-inline-flex pt-1">Preview &nbsp;</h5>
                         <button className="btn btn-success float-right">Save</button>
                     </div>
-                </div>
+                </div>*/}
             </div>
         )
     }

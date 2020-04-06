@@ -22,13 +22,16 @@ class LessonListComponent extends React.Component {
                         />
                     )
                 }
-                <li key={this.props.moduleId}>
-                    <div>
-                        <i onClick={() =>
-                            this.props.createLesson(this.props.moduleId,
-                            {title: 'New Lesson'})} style={{color: "black"}} className="fas btn fa-plus"/>
-                    </div>
-                </li>
+                {
+                    this.props.moduleId &&
+                    <li key={this.props.moduleId}>
+                        <div>
+                            <i onClick={() =>
+                                this.props.createLesson(this.props.moduleId,
+                                {title: 'New Lesson'})} style={{color: "black"}} className="fas btn fa-plus"/>
+                        </div>
+                    </li>
+                }
             </ul>
         )
     }

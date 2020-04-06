@@ -4,7 +4,7 @@ export default class HeadingWidgetComponent extends React.Component {
 
     state = {
         widget: this.props.widget,
-        previewText: this.props.widget.text
+        previewText: this.props.widget.text,
     };
 
     componentDidMount() {
@@ -60,34 +60,41 @@ export default class HeadingWidgetComponent extends React.Component {
     render() {
         return(
             <div className="card-body">
-                <div className="pl-2">
-                    <input className="form-control"
-                           onChange={(e) => this.handleTextChange(e.target.value)}
-                           value={this.state.widget.text} placeholder="Heading text"/>
-                </div>
-                <div className="pl-2 pt-3 pb-3">
-                    <select className="form-control"
-                            onChange={(e) => this.handleHeadingSize(e.target.value)}>
-                        <option value="1">Heading 1</option>
-                        <option value="2">Heading 2</option>
-                        <option value="3">Heading 3</option>
-                        <option value="4">Heading 4</option>
-                        <option value="5">Heading 5</option>
-                        <option value="6">Heading 6</option>
-                    </select>
-                </div>
-                <div className="pl-2">
-                    <input className="form-control"
-                           onChange={(e)=> this.handleTitleChange(e.target.value)}
-                           value={this.state.widget.title} placeholder="Widget name"/>
-                </div>
-                <br/>
-                <div className="pl-2">
-                    <h4>Preview</h4>
-                </div>
-                <div className="pl-2">
-                    {this.state.previewText}
-                </div>
+                {
+                    !this.props.previewStatus &&
+                    <div>
+                        <div className="pl-2">
+                            <input className="form-control"
+                                   onChange={(e) => this.handleTextChange(e.target.value)}
+                                   value={this.state.widget.text} placeholder="Heading text"/>
+                        </div>
+                        <div className="pl-2 pt-3 pb-3">
+                            <select className="form-control"
+                                    onChange={(e) => this.handleHeadingSize(e.target.value)}>
+                                <option value="1">Heading 1</option>
+                                <option value="2">Heading 2</option>
+                                <option value="3">Heading 3</option>
+                                <option value="4">Heading 4</option>
+                                <option value="5">Heading 5</option>
+                                <option value="6">Heading 6</option>
+                            </select>
+                        </div>
+                        <div className="pl-2">
+                            <input className="form-control"
+                                   onChange={(e)=> this.handleTitleChange(e.target.value)}
+                                   value={this.state.widget.title} placeholder="Widget name"/>
+                        </div>
+                        <br/>
+                        <div className="pl-2">
+                            <h4>Preview</h4>
+                        </div>
+                    </div>
+                }
+                {
+                    <div className="pl-2">
+                        {this.state.previewText}
+                    </div>
+                }
             </div>
         )
     }
