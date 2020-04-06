@@ -7,7 +7,7 @@ class CourseEditorComponent extends React.Component {
     render() {
         return (
             <div className="container-fullwidth">
-                <NavBarMainComponent history = {this.props.history}/>
+                <NavBarMainComponent courseId = {this.props.courseId} history = {this.props.history}/>
                 <div className="row">
                     <SideBarComponent {...this.props} {...this.props.courseId}/>
                     <div className="col-9">
