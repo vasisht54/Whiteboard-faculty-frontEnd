@@ -23,11 +23,11 @@ class TopicListComponent extends React.Component {
                                             editTopic = {this.props.editTopic} deleteLesson = {this.props.deleteTopic} />
                     )
                 }
-                <li className="nav-item wbdv-topic-pill" key={this.props.topicId}>
-                    <div className="nav-pill">
+                <li key={this.props.topicId}>
+                    <div className="pt-2">
                         <i onClick={() =>
                             this.props.createTopic(this.props.lessonId,
-                                {title: 'New Topic'})} style={{color: "black"}} className="fas fa-plus"/>
+                                {title: 'New Topic'})} style={{color: "black"}} className="fas btn fa-plus"/>
                     </div>
                 </li>
             </ul>

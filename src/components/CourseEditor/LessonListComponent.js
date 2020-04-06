@@ -2,7 +2,7 @@ import React from "react";
 import LessonTabComponent from "./LessonTabComponent";
 import connect from "react-redux/lib/connect/connect";
 import lessonService from "../../services/LessonService";
-import topicService, {findTopic} from "../../services/TopicService"
+import topicService from "../../services/TopicService"
 import {createLesson, deleteLesson, findLessonsForModule} from "../../actions/lessonActions";
 import {findTopicsForLesson} from "../../actions/topicActions";
 
@@ -22,17 +22,18 @@ class LessonListComponent extends React.Component {
                         />
                     )
                 }
-                <li className="nav-item wbdv-lesson-tab" key={this.props.moduleId}>
-                    <div className="nav-link">
+                <li key={this.props.moduleId}>
+                    <div>
                         <i onClick={() =>
                             this.props.createLesson(this.props.moduleId,
-                            {title: 'New Lesson'})} style={{color: "black"}} className="fas fa-plus"/>
+                            {title: 'New Lesson'})} style={{color: "black"}} className="fas btn fa-plus"/>
                     </div>
                 </li>
             </ul>
         )
     }
 }
+
 
 const stateToPropertyMapper = (state) => {
     return {lessons: state.lessons.lessons}

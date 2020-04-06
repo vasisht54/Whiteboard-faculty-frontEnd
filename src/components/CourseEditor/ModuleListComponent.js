@@ -3,7 +3,8 @@ import ModuleItemComponent from "./ModuleItemComponent";
 import connect from "react-redux/lib/connect/connect";
 import {
     createModule,
-    deleteModule, editModule, FIND_MODULES_FOR_COURSE, findModulesForCourse
+    deleteModule,
+    findModulesForCourse
 } from "../../actions/moduleActions";
 import moduleService from "../../services/ModuleService";
 import lessonService from "../../services/LessonService";

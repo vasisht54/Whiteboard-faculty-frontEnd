@@ -1,58 +1,51 @@
 import React from "react";
-import InputFieldComponent from "../InputFieldComponent";
 
 export default class paragraphWidgetComponent extends React.Component {
+
+    state = {
+        widget: this.props.widget
+    };
+
+    handleTextAreaChange = (text) => {
+        this.setState({
+                widget: {
+                    ...this.state.widget,
+                    text
+                }
+            }
+        )
+    };
+
+    handleTitleChange = (title) => {
+        this.setState({
+            widget: {
+                ...this.state.widget,
+                title
+            }
+        })
+    };
+
     render() {
         return(
-            <div className="card col">
-                <div className="row">
-                    <div className="col-sm-3"><h3>Paragraph Widget</h3></div>
-                    <div className="col-sm-9">
-                        <div className="d-inline-flex float-right pt-1">
-                            <button className="btn badge-danger btn-sm">X</button>
-                        </div>
-                        <div className="d-inline-flex float-right pr-2 pt-2 my-auto">
-                            <label>
-                                <select className="dropdown">
-                                    <option>Heading</option>
-                                    <option>List</option>
-                                    <option>Image</option>
-                                    <option>Paragraph</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div className="d-inline-flex float-right pr-2 pt-1">
-                            <button className="btn badge-warning btn-sm">
-                                <i className="fas fa-arrow-down"/>
-                            </button>
-                        </div>
-                        <div className="d-inline-flex float-right pr-2 pt-1">
-                            <button className="btn btn-warning btn-sm">
-                                <i className="fas fa-arrow-up"/>
-                            </button>
-                        </div>
-                    </div>
-                </div>
                 <div className="card-body">
-                    <InputFieldComponent placeHolder="Heading text" />
-                    <div className="row p-1">
-                        <select className="form-control">
-                            <option>Heading 1</option>
-                            <option>Heading 2</option>
-                            <option>Heading 3</option>
-                            <option>Heading 4</option>
-                        </select>
+                    <div className="form-group pl-2">
+                        <textarea className="form-control" rows="2" placeholder="Paragraph text"
+                                  onChange={(e)=> this.handleTextAreaChange(e.target.value)}
+                                  value={this.state.widget.text}/>
                     </div>
-                    <InputFieldComponent placeHolder="Widget name" />
+                    <div className="pl-2">
+                        <input className="form-control"
+                               onChange={(e) => this.handleTitleChange(e.target.value)}
+                               value={this.state.widget.title} placeholder="Widget name"/>
+                    </div>
                     <br/>
-                    <div className="row p-1">
+                    <div className="pl-2">
                         <h4>Preview</h4>
                     </div>
-                    <div className="row p-1">
-                        <h2>Heading text</h2>
+                    <div className="pl-2">
+                        <h6>{this.state.widget.text}</h6>
                     </div>
                 </div>
-            </div>
         )
     }
 }

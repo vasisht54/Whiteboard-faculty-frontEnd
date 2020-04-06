@@ -1,6 +1,5 @@
 import React from "react";
 import CourseCardComponent from "../components/CourseManager/CourseCardComponent";
-import {findAllCourses, deleteCourse, updateCourse} from "../services/CourseService";
 
 class CourseCardListComponent extends React.Component {
     state = {
@@ -15,39 +14,6 @@ class CourseCardListComponent extends React.Component {
                           })
         }
     }
-
-   /* editCourse = (course) =>
-        this.setState(prevState => {
-            updateCourse(course._id, {title: prevState.updatedCourseTitle, ownedBy: "me"})
-                .then(() => {
-                    findAllCourses()
-                        .then(courses => {
-                            this.setState({
-                                              courses: courses
-                                          })
-                        })
-                })
-        });
-
-
-    onTextEntry = (title) =>
-        this.setState({
-                          updatedCourseTitle: title
-                      });
-
-
-    deleteCourse = (course) =>
-        this.setState(prevState => {
-            deleteCourse(course._id)
-                .then(() => {
-                    findAllCourses()
-                        .then(courses => {
-                            this.setState({
-                                              courses: courses
-                                          })
-                        })
-                })
-        });*/
 
     render(){
         return(

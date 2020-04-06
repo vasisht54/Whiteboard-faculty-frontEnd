@@ -44,5 +44,6 @@ export default {
     findLessonsForModule,
     createLesson,
     deleteLesson,
-    updateLesson
+    updateLesson,
+    findLesson
 }

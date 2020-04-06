@@ -10,7 +10,7 @@ class CourseRowComponent extends React.Component {
         return(
             <tr key={this.props.course._id} className="wbdv-row wbdv-course">
                 {   !this.state.editing ?
-                    <td scope="row">
+                    <td>
                         <i className="fas fa-file-alt wbdv-row wbdv-icon"/>&nbsp;&nbsp;
                         <Link to={`/course-editor/${this.props.course._id}`}>
                             {this.props.course.title}

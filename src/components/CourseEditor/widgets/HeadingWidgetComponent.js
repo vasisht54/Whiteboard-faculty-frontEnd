@@ -1,56 +1,92 @@
 import React from "react";
-import InputFieldComponent from "../InputFieldComponent";
 
 export default class HeadingWidgetComponent extends React.Component {
+
+    state = {
+        widget: this.props.widget,
+        previewText: this.props.widget.text
+    };
+
+    componentDidMount() {
+        this.state.previewText = <h1>{this.state.widget.text}</h1>
+    }
+
+    handleHeadingSize = (size) => {
+        switch (size) {
+            case "1": this.setState({
+                previewText: <h1>{this.state.widget.text}</h1>
+            });
+            break;
+            case "2": this.setState({
+                previewText: <h2>{this.state.widget.text}</h2>
+            });
+                break;
+            case "3": this.setState({
+                previewText: <h3>{this.state.widget.text}</h3>
+            });
+                break;
+            case "4": this.setState({
+                previewText: <h4>{this.state.widget.text}</h4>
+            });
+                break;
+            case "5": this.setState({
+                previewText: <h5>{this.state.widget.text}</h5>
+            });
+                break;
+            case "6": this.setState({
+                previewText: <h6>{this.state.widget.text}</h6>
+            });
+        }
+    };
+
+    handleTextChange = (text) => {
+        this.setState({
+            widget: {
+                ...this.state.widget,
+                text
+            }
+        })
+    };
+
+    handleTitleChange = (title) => {
+        this.setState({
+            widget: {
+                ...this.state.widget,
+                title
+            }
+        })
+    };
+
     render() {
         return(
-            <div className="card col">
-                <div className="row">
-                    <div className="col-sm-3"><h3>Heading Widget</h3></div>
-                    <div className="col-sm-9">
-                        <div className="d-inline-flex float-right pt-1">
-                            <button className="btn badge-danger btn-sm">X</button>
-                        </div>
-                        <div className="d-inline-flex float-right pr-2 pt-2 my-auto">
-                            <label>
-                                <select className="dropdown">
-                                    <option>Heading</option>
-                                    <option>List</option>
-                                    <option>Image</option>
-                                    <option>Paragraph</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div className="d-inline-flex float-right pr-2 pt-1">
-                            <button className="btn badge-warning btn-sm">
-                                <i className="fas fa-arrow-down"/>
-                            </button>
-                        </div>
-                        <div className="d-inline-flex float-right pr-2 pt-1">
-                            <button className="btn btn-warning btn-sm">
-                                <i className="fas fa-arrow-up"/>
-                            </button>
-                        </div>
-                    </div>
+            <div className="card-body">
+                <div className="pl-2">
+                    <input className="form-control"
+                           onChange={(e) => this.handleTextChange(e.target.value)}
+                           value={this.state.widget.text} placeholder="Heading text"/>
                 </div>
-                <div className="card-body">
-                    <InputFieldComponent placeHolder="Heading text" />
-                    <div className="row p-1">
-                        <select className="form-control">
-                            <option>Heading 1</option>
-                            <option>Heading 2</option>
-                            <option>Heading 3</option>
-                            <option>Heading 4</option>
-                        </select>
-                    </div>
-                    <InputFieldComponent placeHolder="Widget name" />
-                    <br/>
-                    <div className="row p-1">
-                        <h4>Preview</h4>
-                    </div>
-                    <div className="row p-1">
-                        <h2>Heading text</h2>
-                    </div>
+                <div className="pl-2 pt-3 pb-3">
+                    <select className="form-control"
+                            onChange={(e) => this.handleHeadingSize(e.target.value)}>
+                        <option value="1">Heading 1</option>
+                        <option value="2">Heading 2</option>
+                        <option value="3">Heading 3</option>
+                        <option value="4">Heading 4</option>
+                        <option value="5">Heading 5</option>
+                        <option value="6">Heading 6</option>
+                    </select>
+                </div>
+                <div className="pl-2">
+                    <input className="form-control"
+                           onChange={(e)=> this.handleTitleChange(e.target.value)}
+                           value={this.state.widget.title} placeholder="Widget name"/>
+                </div>
+                <br/>
+                <div className="pl-2">
+                    <h4>Preview</h4>
+                </div>
+                <div className="pl-2">
+                    {this.state.previewText}
                 </div>
             </div>
         )

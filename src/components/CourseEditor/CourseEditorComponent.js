@@ -2,8 +2,6 @@ import React from "react";
 import NavBarMainComponent from "./NavBarMainComponent";
 import SideBarComponent from "./SideBarComponent";
 import MainContentComponent from "./MainContentComponent";
-import {createStore} from "redux";
-import {Provider} from "react-redux";
 
 class CourseEditorComponent extends React.Component {
     render() {

@@ -8,6 +8,7 @@ const widgetReducer = (state = initialState, action) => {
 
     switch(action.type) {
         case CREATE_WIDGET :
+            console.log("Inside reducer", action.newWidget);
             return {
                 widgets: [
                     ...state.widgets,
@@ -17,7 +18,7 @@ const widgetReducer = (state = initialState, action) => {
 
         case DELETE_WIDGET:
             return {
-                widgets: state.widgets.filter(widget => widget._id !== action.widgetId)
+                widgets: state.widgets.filter(widget => widget.id !== action.widgetId)
             };
 
         case FIND_WIDGETS_FOR_TOPIC:

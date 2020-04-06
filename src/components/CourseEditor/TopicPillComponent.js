@@ -26,8 +26,6 @@ class TopicPillComponent extends React.Component {
                     ...this.state.topic,
                     title
                 }
-            }, function () {
-                       console.log("onChange", this.state.topic.title)
             }
         )
     };
@@ -48,7 +46,7 @@ class TopicPillComponent extends React.Component {
                                         editing: true
                                     }
                                 }
-                            )} className="fas float-right fa-pencil-alt"/>
+                            )} className="fas btn float-right fa-pencil-alt"/>
 
                         </div>
                         :
@@ -59,7 +57,7 @@ class TopicPillComponent extends React.Component {
                             <i onClick={() => {
                                 this.setState({editing: false});
                                 this.props.editTopic(this.state.topic)
-                            }} className="fas fa-check"/>
+                            }} className="fas btn fa-check"/>
 
                             <button onClick={() => {
                                 this.setState({editing: false});

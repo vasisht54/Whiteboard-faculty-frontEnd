@@ -48,7 +48,8 @@ class LessonTabComponent extends React.Component{
                                     editing: true
                                 }
                             }
-                        )} className="fas fa-pencil-alt"/>
+                        )}
+                           className="fas btn fa-pencil-alt"/>
                     </div>
                         :
                     <div>
@@ -58,7 +59,7 @@ class LessonTabComponent extends React.Component{
                         <button className="btn wbdv-row wbdv-button wbdv-module-save" onClick={() => {
                             this.setState({editing: false});
                             this.props.editLesson(this.state.lesson)
-                        }}><i className="fas fa-check"/>
+                        }}><i className="fas btn fa-check"/>
                         </button>
                         <button onClick={() => {
                             this.setState({editing: false});

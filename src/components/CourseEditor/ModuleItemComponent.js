@@ -25,8 +25,6 @@ class ModuleItemComponent extends React.Component {
                     ...this.state.module,
                     title
                 }
-            }, function () {
-                /*       console.log("onChange", this.state.module)*/
             }
         )
     };
@@ -48,7 +46,7 @@ class ModuleItemComponent extends React.Component {
                                 }
                             }
                         )}
-                       className="fas float-right fa-pencil-alt"/>
+                       className="fas btn module-edit-btn float-right fa-pencil-alt"/>
                     </div>
                     :
                     <div>
