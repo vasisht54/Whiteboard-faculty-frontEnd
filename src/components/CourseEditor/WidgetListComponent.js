@@ -3,6 +3,7 @@ import connect from "react-redux/lib/connect/connect";
 import WidgetItemComponent from "./widgets/WidgetItemComponent";
 import widgetService from "../../services/WidgetService";
 import {createWidget, deleteWidget, findWidgetsForTopic} from "../../actions/widgetActions";
+import WidgetPreviewComponent from "./widgets/WidgetPreviewComponent";
 
 class WidgetListComponent extends React.Component {
 
@@ -50,27 +51,32 @@ class WidgetListComponent extends React.Component {
                                 </label>
                                 &nbsp;
                                 <h5 className="float-right d-inline-flex pt-1">Preview &nbsp;</h5>
-                                <button className="btn btn-success float-right">Save</button>
                             </div>
                         </div>
                     </div>
                 }
-                <ul className="container">
-                    {
-                        this.props.widgets.map(widget =>
-                        <WidgetItemComponent key={widget.id} widget={widget}
-                                             previewStatus = {this.state.previewStatus}
-                                             deleteWidget={this.props.deleteWidget}/>
-                        )
-                    }
-                    {
-                        this.props.topicId &&
-                        <div className="btn float-right">
-                            <i onClick={() => this.props.createWidget(this.props.topicId, this.newWidgetTemplate)}
-                            className="fas fa-plus-circle fa-2x"/>
-                        </div>
-                    }
-                </ul>
+                {
+                   !this.state.previewStatus &&
+                   <ul className="container">
+                        {
+                            this.props.widgets.map(widget =>
+                            <WidgetItemComponent key={widget.id} widget={widget}
+                                                 deleteWidget={this.props.deleteWidget}/>
+                            )
+                        }
+                        {
+                            this.props.topicId &&
+                            <div className="btn float-right">
+                                <i onClick={() => this.props.createWidget(this.props.topicId, this.newWidgetTemplate)}
+                                className="fas fa-plus-circle fa-2x"/>
+                            </div>
+                        }
+                    </ul>
+                }
+                {
+                    this.state.previewStatus &&
+                        <WidgetPreviewComponent widgets={this.props.widgets}/>
+                }
             </div>
         )
     }

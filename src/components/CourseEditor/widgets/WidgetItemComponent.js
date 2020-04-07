@@ -7,26 +7,17 @@ export default class widgetItemComponent extends React.Component {
     state = {
         editing: false,
         widget: this.props.widget,
-        dropDownIsOpen: false,
-        preview: this.props.previewStatus
+        dropDownIsOpen: false
     };
 
     toggleOpen = () => this.setState({dropDownIsOpen: !this.state.dropDownIsOpen});
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-       /* console.log("Prev props' preview status", prevProps.previewStatus);
-        console.log("This props' preview status", this.props.previewStatus);*/
         if(prevProps.widget.id !== this.props.widget.id) {
             this.setState({
                 widget : this.props.widget
             })
         }
-        if(prevProps.previewStatus !== this.props.previewStatus) {
-            this.setState({
-                preview: this.props.previewStatus
-            })
-        }
-        /*console.log("State's preview after update ", this.state.preview)*/
     }
 
     handleWidgetName = () => {
@@ -43,14 +34,14 @@ export default class widgetItemComponent extends React.Component {
                 <div className="card col">
                     <div className="row">
                         <div className="col-sm-3"><h3>{this.handleWidgetName()}</h3></div>
-                        {
-                            !this.state.preview &&
+
                             <div className="col-sm-9">
-                                <div className="d-inline-flex float-right pt-1">
+                                <div className="d-inline-flex float-right pt-1 pl-2">
                                     <button onClick={() => {
                                         this.props.deleteWidget(this.state.widget.id)}}
                                             className="btn btn-danger btn-sm">X</button>
                                 </div>
+                                <button onClick={() => this.props.editWidget(this.state.widget)} className="btn btn-success float-right">Save</button>
                                 <div className="d-inline-flex float-right pr-2 my-auto">
                                     <div className="dropdown" onClick={this.toggleOpen}>
                                         <button className="btn btn-outline-secondary dropdown-toggle" type="button"
@@ -65,7 +56,6 @@ export default class widgetItemComponent extends React.Component {
                                             <a className="dropdown-item" href="#">Paragraph</a>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div className="d-inline-flex float-right pr-2 pt-1">
                                     <button className="btn btn-warning btn-sm">
@@ -78,17 +68,15 @@ export default class widgetItemComponent extends React.Component {
                                     </button>
                                 </div>
                             </div>
-                        }
+
                         {
                             this.state.widget.type === "HEADING" &&
                             <HeadingWidgetComponent
-                                previewStatus = {this.props.previewStatus}
                                 widget={this.props.widget}/>
                         }
                         {
                             this.state.widget.type === "PARAGRAPH" &&
                             <ParagraphWidgetComponent
-                                previewStatus = {this.props.previewStatus}
                                 widget = {this.props.widget}/>
                         }
                      </div>
