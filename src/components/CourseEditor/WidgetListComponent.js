@@ -61,7 +61,9 @@ class WidgetListComponent extends React.Component {
                         {
                             this.props.widgets.map(widget =>
                             <WidgetItemComponent key={widget.id} widget={widget}
-                                                 deleteWidget={this.props.deleteWidget}/>
+                                                 deleteWidget={this.props.deleteWidget}
+                                                 editWidget = {this.props.editWidget}
+                            />
                             )
                         }
                         {
@@ -111,7 +113,7 @@ const dispatchToPropertyMapper = dispatch => ({
                         }
                     )
             )
-    },
+    }
 });
 
 const stateToPropertyMapper = (state) => ({

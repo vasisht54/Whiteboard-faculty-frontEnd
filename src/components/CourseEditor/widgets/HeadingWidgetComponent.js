@@ -62,12 +62,18 @@ export default class HeadingWidgetComponent extends React.Component {
             <div className="card-body">
                 <div className="pl-2">
                     <input className="form-control"
-                           onChange={(e) => this.handleTextChange(e.target.value)}
+                           onChange={(e) => {
+                               this.handleTextChange(e.target.value);
+                               this.props.updateText(e.target.value);
+                           }}
                            value={this.state.widget.text} placeholder="Heading text"/>
                 </div>
                 <div className="pl-2 pt-3 pb-3">
                     <select className="form-control"
-                            onChange={(e) => this.handleHeadingSize(e.target.value)}>
+                            onChange={(e) => {
+                                this.handleHeadingSize(e.target.value);
+                                this.props.updateSize(e.target.value);
+                            }}>
                         <option value="1">Heading 1</option>
                         <option value="2">Heading 2</option>
                         <option value="3">Heading 3</option>
@@ -78,7 +84,10 @@ export default class HeadingWidgetComponent extends React.Component {
                 </div>
                 <div className="pl-2">
                     <input className="form-control"
-                           onChange={(e)=> this.handleTitleChange(e.target.value)}
+                           onChange={(e)=> {
+                               this.handleTitleChange(e.target.value);
+                               this.props.updateTitle(e.target.value);
+                           }}
                            value={this.state.widget.title} placeholder="Widget name"/>
                 </div>
                 <br/>

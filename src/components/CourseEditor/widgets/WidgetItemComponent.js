@@ -27,6 +27,34 @@ export default class widgetItemComponent extends React.Component {
             return <div>Paragraph Widget</div>;
     };
 
+    updateSize = (size) => {
+        this.setState({
+            widget: {
+                ...this.state.widget,
+                size
+            }
+        })
+    };
+
+    updateText = (text) => {
+        console.log(text);
+        this.setState({
+            widget: {
+                ...this.state.widget,
+                text
+            }
+        })
+    };
+
+    updateTitle = (title) => {
+        this.setState({
+            widget: {
+                ...this.state.widget,
+                title
+            }
+        })
+    };
+
     render() {
         const menuClass = `dropdown-menu${this.state.dropDownIsOpen ? " show" : ""}`;
         return (
@@ -72,11 +100,16 @@ export default class widgetItemComponent extends React.Component {
                         {
                             this.state.widget.type === "HEADING" &&
                             <HeadingWidgetComponent
+                                updateSize = {this.updateSize}
+                                updateTitle = {this.updateTitle}
+                                updateText = {this.updateText}
                                 widget={this.props.widget}/>
                         }
                         {
                             this.state.widget.type === "PARAGRAPH" &&
                             <ParagraphWidgetComponent
+                                updateTitle = {this.updateTitle}
+                                updateText = {this.updateText}
                                 widget = {this.props.widget}/>
                         }
                      </div>

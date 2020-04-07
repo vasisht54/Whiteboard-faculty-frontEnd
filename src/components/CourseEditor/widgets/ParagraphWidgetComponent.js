@@ -31,12 +31,18 @@ export default class paragraphWidgetComponent extends React.Component {
 
                     <div className="form-group pl-2">
                         <textarea className="form-control" rows="2" placeholder="Paragraph text"
-                                  onChange={(e)=> this.handleTextAreaChange(e.target.value)}
+                                  onChange={(e)=> {
+                                      this.handleTextAreaChange(e.target.value);
+                                      this.props.updateText(e.target.value);
+                                  }}
                                   value={this.state.widget.text}/>
                     </div>
                     <div className="pl-2">
                         <input className="form-control"
-                               onChange={(e) => this.handleTitleChange(e.target.value)}
+                               onChange={(e) => {
+                                   this.handleTitleChange(e.target.value);
+                                   this.props.updateTitle(e.target.value);
+                               }}
                                value={this.state.widget.title} placeholder="Widget name"/>
                     </div>
                     <br/>
