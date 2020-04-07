@@ -30,21 +30,11 @@ class WidgetListComponent extends React.Component {
         value: null
     };
 
-    previewToggle = () => {
-        console.log("Before toggle", this.state.previewStatus);
-        if(this.state.preview) {
-            this.setState({
-                previewStatus: false
-            })
-        }
-        else {
-            this.setState({
-                previewStatus: true
-            })
-        }
-        console.log("After toggle ", this.state.previewStatus)
+    previewToggle = (e) => {
+        this.setState({
+            previewStatus: !this.state.previewStatus
+        })
     };
-
 
     render() {
         return(
@@ -55,8 +45,8 @@ class WidgetListComponent extends React.Component {
                             <div className="col-7"/>
                             <div className="col-5">
                                 <label className="switch float-right pt-1">
-                                    <input type="checkbox" />
-                                    <span onClick={this.previewToggle} className="slider round"/>
+                                    <input onChange={this.previewToggle} type="checkbox" />
+                                    <span className="slider round"/>
                                 </label>
                                 &nbsp;
                                 <h5 className="float-right d-inline-flex pt-1">Preview &nbsp;</h5>
