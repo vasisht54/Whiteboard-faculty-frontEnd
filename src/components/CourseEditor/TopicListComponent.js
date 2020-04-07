@@ -31,7 +31,7 @@ class TopicListComponent extends React.Component {
                 {
                     this.props.lessonId &&
                     <li key={this.props.topicId}>
-                        <div className="pt-2">
+                        <div className="pt-3">
                             <i onClick={() =>
                                 this.props.createTopic(this.props.lessonId,
                                     {title: 'New Topic'})} style={{color: "black"}} className="fas btn fa-plus"/>

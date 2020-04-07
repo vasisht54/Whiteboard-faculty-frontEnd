@@ -32,7 +32,7 @@ class LessonListComponent extends React.Component {
                 {
                     this.props.moduleId &&
                     <li key={this.props.moduleId}>
-                        <div>
+                        <div className="pt-2">
                             <i onClick={() =>
                                 this.props.createLesson(this.props.moduleId,
                                 {title: 'New Lesson'})} style={{color: "black"}} className="fas btn fa-plus"/>

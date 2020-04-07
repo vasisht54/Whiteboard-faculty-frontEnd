@@ -7,10 +7,7 @@ export default class widgetItemComponent extends React.Component {
     state = {
         editing: false,
         widget: this.props.widget,
-        dropDownIsOpen: false
     };
-
-    toggleOpen = () => this.setState({dropDownIsOpen: !this.state.dropDownIsOpen});
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.widget.id !== this.props.widget.id) {
@@ -37,13 +34,29 @@ export default class widgetItemComponent extends React.Component {
     };
 
     updateText = (text) => {
-        console.log(text);
         this.setState({
             widget: {
                 ...this.state.widget,
                 text
             }
         })
+    };
+
+
+    updateType = (type) => {
+        this.setState({
+            widget: {
+                ...this.state.widget,
+                type
+            }
+        })
+    };
+
+    currentWidgetType = () => {
+        switch(this.state.widget.type) {
+            case "HEADING": return "HEADING";
+            case "PARAGRAPH": return "PARAGRAPH";
+        }
     };
 
     updateTitle = (title) => {
@@ -56,7 +69,6 @@ export default class widgetItemComponent extends React.Component {
     };
 
     render() {
-        const menuClass = `dropdown-menu${this.state.dropDownIsOpen ? " show" : ""}`;
         return (
             <div  key={this.state.widget.id}>
                 <div className="card col">
@@ -71,18 +83,11 @@ export default class widgetItemComponent extends React.Component {
                                 </div>
                                 <button onClick={() => this.props.editWidget(this.state.widget)} className="btn btn-success float-right">Save</button>
                                 <div className="d-inline-flex float-right pr-2 my-auto">
-                                    <div className="dropdown" onClick={this.toggleOpen}>
-                                        <button className="btn btn-outline-secondary dropdown-toggle" type="button"
-                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup={true}
-                                                aria-expanded={false}>
-                                            {this.state.widget.type.slice(0,1) + this.state.widget.type.slice(1).toLowerCase()}
-                                        </button>
-                                        <div className={menuClass} aria-labelledby="dropdownMenuButton">
-                                            <a className="dropdown-item" href="#">Heading</a>
-                                            <a className="dropdown-item" href="#">List</a>
-                                            <a className="dropdown-item" href="#">Image</a>
-                                            <a className="dropdown-item" href="#">Paragraph</a>
-                                        </div>
+                                    <div className="form-group">
+                                        <select value={this.currentWidgetType()} onChange={(e) => this.updateType(e.target.value)} className="form-control">
+                                            <option value="HEADING" >Heading</option>
+                                            <option value="PARAGRAPH">Paragraph</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="d-inline-flex float-right pr-2 pt-1">

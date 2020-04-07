@@ -109,8 +109,8 @@ html, body {
     height: 100vh;
 }
 
-.col-3.bg-dark.wbdv-side-bar {
-    height: 100vh;
+.col-sm-3.bg-dark.wbdv-side-bar {
+    min-height: 100vh;
 }
 
 .card {
@@ -202,4 +202,8 @@ input:checked + .slider:before {
 
 .nav-link.wbdv-topic.show-active {
     background-color: #f0f2f4;
+}
+
+.row.wbdv-main-row {
+    margin-right: 0;
 }
