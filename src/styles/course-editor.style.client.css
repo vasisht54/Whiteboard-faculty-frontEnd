@@ -199,3 +199,7 @@ input:checked + .slider:before {
     color: lightblue;
     cursor: pointer;
 }
+
+.nav-link.wbdv-topic.show-active {
+    background-color: #f0f2f4;
+}

@@ -31,11 +31,12 @@ class TopicPillComponent extends React.Component {
     };
 
     render() {
+        const topicClass = `nav-link wbdv-topic${this.props.activeTopicId === this.state.topic._id ? " show-active" : ""}`;
         return (
-            <li className="nav-item wbdv-topic-pill">
+            <li className="nav-item">
                 {
                     !this.state.editing ?
-                        <div>
+                        <div className={topicClass}>
                             <Link onClick={this.findWidgets} to={`/course-editor/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${this.state.topic._id}`}>
                                 <div className="nav-link shadow">{this.state.topic.title}</div>
                             </Link>

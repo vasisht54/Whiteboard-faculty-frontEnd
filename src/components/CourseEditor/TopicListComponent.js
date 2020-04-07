@@ -17,10 +17,15 @@ class TopicListComponent extends React.Component {
             <ul className="nav nav-pills navbar-expand-md wbdv-topic-pill-list">
                 {
                     this.props.topics && this.props.topics.map(topic =>
-                        <TopicPillComponent {...this.props} courseId={this.props.courseId} moduleId = {this.props.moduleId}
-                                            key = {topic._id} topic = {topic}
+                        <TopicPillComponent {...this.props}
+                                            courseId={this.props.courseId}
+                                            moduleId = {this.props.moduleId}
+                                            key = {topic._id}
+                                            topic = {topic}
                                             lessonId = {this.props.lessonId}
-                                            editTopic = {this.props.editTopic} deleteLesson = {this.props.deleteTopic} />
+                                            editTopic = {this.props.editTopic}
+                                            activeTopicId = {this.props.match.params.topicId}
+                                            deleteLesson = {this.props.deleteTopic} />
                     )
                 }
                 {

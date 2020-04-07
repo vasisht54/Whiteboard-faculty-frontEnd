@@ -25,7 +25,7 @@ class ModuleListComponent extends React.Component {
                                              courseId = {this.props.courseId}
                                              key={module._id}
                                              module = {module}
-
+                                             activeModuleId = {this.props.match.params.moduleId}
                                              editModule={this.props.editModule}
                                              deleteModule={this.props.deleteModule}/>
                     )

@@ -32,11 +32,12 @@ class LessonTabComponent extends React.Component{
     };
 
     render() {
+        const lessonTabClass = `nav-link${this.props.activeLessonId === this.state.lesson._id ? " active" : ""}`;
         return (
-            <li className="nav-item wbdv-topic-pill">
+            <li className="nav-item">
                 {
                     !this.state.editing ?
-                    <div>
+                    <div className={lessonTabClass}>
                         <Link onClick={this.findTopics} to={`/course-editor/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.state.lesson._id}`}>
                             {this.state.lesson.title}
                         </Link>

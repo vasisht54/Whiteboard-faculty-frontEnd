@@ -17,8 +17,15 @@ class LessonListComponent extends React.Component {
             <ul className="nav nav-tabs navbar-expand-md wbdv-topic-pill-list">
                 {
                     this.props.lessons && this.props.lessons.map(lesson =>
-                        <LessonTabComponent {...this.props} {...this.props.courseId} moduleId = {this.props.moduleId} key = {lesson._id} lesson = {lesson}
-                                            editLesson = {this.props.editLesson} deleteLesson = {this.props.deleteLesson}
+                        <LessonTabComponent {...this.props}
+                                            {...this.props.courseId}
+                                            moduleId = {this.props.moduleId}
+                                            activeLessonId = {this.props.match.params.lessonId}
+                                            key = {lesson._id}
+                                            lesson = {lesson}
+                                            editLesson = {this.props.editLesson}
+                                            deleteLesson = {this.props.deleteLesson}
+
                         />
                     )
                 }

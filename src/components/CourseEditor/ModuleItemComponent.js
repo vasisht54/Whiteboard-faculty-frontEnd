@@ -29,14 +29,12 @@ class ModuleItemComponent extends React.Component {
         )
     };
     render() {
+        const moduleItemClass = `nav-link list-group-item my-2 font-weight-bolder wbdv-module-item-title${this.props.activeModuleId === this.state.module._id ? " bg-primary" : ""}`;
         return (
             <li className="nav-item bg-dark pl-3 wbdv-module-item">
                 {   !this.state.editing ?
-                    <div className="nav-link list-group-item my-2 font-weight-bolder wbdv-module-item-title">
-                        <Link className = "wbdv-module-title" onClick={
-                            this.findLessons
-
-                        }
+                    <div className={moduleItemClass}>
+                        <Link className = "wbdv-module-title" onClick={this.findLessons}
                           to={`/course-editor/${this.props.courseId}/modules/${this.state.module._id}`}>
                             {this.state.module.title}
                         </Link>
