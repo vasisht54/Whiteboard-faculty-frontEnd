@@ -6,6 +6,12 @@ class CourseRowComponent extends React.Component {
         editing: false
     };
 
+    lastUpdatedTimeFormatter = (string) => {
+        let date = string.slice(0, 10);
+        let time = string.slice(11, 19);
+        return date + " " + time + " GMT";
+    };
+
     render() {
         return(
             <tr key={this.props.course._id} className="wbdv-row wbdv-course">
@@ -25,7 +31,7 @@ class CourseRowComponent extends React.Component {
                     </td>
                 }
                 <td className="wbdv-row wbdv-owner">{this.props.course.ownedBy}</td>
-                <td className="wbdv-row wbdv-modified-date">{this.props.course._updatedAt}</td>
+                <td className="wbdv-row wbdv-modified-date">{this.lastUpdatedTimeFormatter(this.props.course._updatedAt)}</td>
                 {
                     !this.state.editing ?
                     <td>

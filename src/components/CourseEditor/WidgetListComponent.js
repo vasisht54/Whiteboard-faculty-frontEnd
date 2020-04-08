@@ -1,7 +1,7 @@
 import React from "react";
 import connect from "react-redux/lib/connect/connect";
 import WidgetItemComponent from "./widgets/WidgetItemComponent";
-import widgetService from "../../services/WidgetService";
+import widgetService, {updateWidget} from "../../services/WidgetService";
 import {createWidget, deleteWidget, findWidgetsForTopic} from "../../actions/widgetActions";
 import WidgetPreviewComponent from "./widgets/WidgetPreviewComponent";
 
@@ -20,7 +20,7 @@ class WidgetListComponent extends React.Component {
         title: "",
         topicId: this.props.topicId,
         type: "HEADING",
-        order: 1,
+        order: this.getOrder(),
         text: "Sample Heading text",
         src: null,
         size: 1,
@@ -31,11 +31,16 @@ class WidgetListComponent extends React.Component {
         value: null
     };
 
+    getOrder() {
+        return this.props.widgets.length + 1;
+    }
+
     previewToggle = (e) => {
         this.setState({
             previewStatus: !this.state.previewStatus
         })
     };
+
 
     render() {
         return(
@@ -63,6 +68,7 @@ class WidgetListComponent extends React.Component {
                             <WidgetItemComponent key={widget.id} widget={widget}
                                                  deleteWidget={this.props.deleteWidget}
                                                  editWidget = {this.props.editWidget}
+                                                 updateWidgetOrder = {this.props.updateWidgetOrder}
                             />
                             )
                         }
@@ -112,6 +118,15 @@ const dispatchToPropertyMapper = dispatch => ({
                             dispatch(findWidgetsForTopic(actualWidgets))
                         }
                     )
+            )
+    },
+    updateWidgetOrder: (direction, widget) => {
+        widgetService.updateWidgetOrder(widget.id, widget, direction)
+            .then(response =>
+                widgetService.findWidgetsForTopic(widget.topicId)
+                    .then(actualWidgets => {
+                        dispatch(findWidgetsForTopic(actualWidgets))
+                    })
             )
     }
 });

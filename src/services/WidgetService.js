@@ -35,9 +35,21 @@ export const findWidgetsForTopic = async(topicId) => {
     return await response.json();
 };
 
+export const updateWidgetOrder = async(widgetId, widget, direction) => {
+    const response = await fetch(`${WIDGET_SERVICE_API_URL}/widgets/${widgetId}/${direction}`, {
+            method: 'PUT',
+            body: JSON.stringify(widget),
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    return await response.json()
+};
+
 export default {
     findWidgetsForTopic,
     createWidget,
     deleteWidget,
-    updateWidget
+    updateWidget,
+    updateWidgetOrder
 }

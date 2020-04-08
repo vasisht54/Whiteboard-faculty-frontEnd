@@ -91,12 +91,14 @@ export default class widgetItemComponent extends React.Component {
                                     </div>
                                 </div>
                                 <div className="d-inline-flex float-right pr-2 pt-1">
-                                    <button className="btn btn-warning btn-sm">
+                                    <button onClick={() => this.props.updateWidgetOrder("DOWN", this.state.widget)}
+                                            className="btn btn-warning btn-sm">
                                         <i className="fas fa-arrow-down"/>
                                     </button>
                                 </div>
                                 <div className="d-inline-flex float-right pr-2 pt-1">
-                                    <button className="btn btn-warning btn-sm">
+                                    <button onClick={() => this.props.updateWidgetOrder("UP", this.state.widget)}
+                                            className="btn btn-warning btn-sm">
                                         <i className="fas fa-arrow-up"/>
                                     </button>
                                 </div>
