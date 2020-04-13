@@ -76,7 +76,7 @@ class WidgetListComponent extends React.Component {
                             this.props.topicId &&
                             <div className="btn float-right">
                                 <i onClick={() => this.props.createWidget(this.props.topicId, this.newWidgetTemplate)}
-                                className="fas fa-plus-circle fa-2x"/>
+                                className="fas fa-plus-square fa-2x"/>
                             </div>
                         }
                     </ul>
