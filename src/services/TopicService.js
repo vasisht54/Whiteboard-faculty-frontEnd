@@ -1,4 +1,4 @@
-import {API_URL} from "../common/constants";
+import {JPA_API_URL, API_URL} from "../common/constants";
 
 export const updateTopic = async (topicId, topic) => {
     const response = await fetch(`${API_URL}/topics/${topicId}`, {

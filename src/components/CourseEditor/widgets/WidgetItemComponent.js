@@ -1,6 +1,7 @@
 import React from "react";
 import HeadingWidgetComponent from "./HeadingWidgetComponent";
 import ParagraphWidgetComponent from "./ParagraphWidgetComponent";
+import ListWidgetComponent from "./ListWidgetComponent";
 
 export default class widgetItemComponent extends React.Component {
 
@@ -22,15 +23,8 @@ export default class widgetItemComponent extends React.Component {
             return <div>Heading Widget</div>;
         else if(this.state.widget.type === "PARAGRAPH")
             return <div>Paragraph Widget</div>;
-    };
-
-    updateSize = (size) => {
-        this.setState({
-            widget: {
-                ...this.state.widget,
-                size
-            }
-        })
+        else if(this.state.widget.type === "LIST")
+            return <div>List Widget</div>
     };
 
     updateText = (text) => {
@@ -43,7 +37,7 @@ export default class widgetItemComponent extends React.Component {
     };
 
 
-    updateType = (type) => {
+    updateWidgetType = (type) => {
         this.setState({
             widget: {
                 ...this.state.widget,
@@ -56,6 +50,7 @@ export default class widgetItemComponent extends React.Component {
         switch(this.state.widget.type) {
             case "HEADING": return "HEADING";
             case "PARAGRAPH": return "PARAGRAPH";
+            case "LIST": return "LIST"
         }
     };
 
@@ -67,6 +62,26 @@ export default class widgetItemComponent extends React.Component {
             }
         })
     };
+
+    updateSize = (size) => {
+        const num = parseInt(size)
+        this.setState( {
+            widget: {
+                ...this.state.widget,
+                size: num
+            }
+        })
+    }
+
+    updateListType = (type) => {
+        this.setState( {
+            widget: {
+                ...this.state.widget,
+                value: type
+            }
+        })
+    }
+
 
     render() {
         return (
@@ -84,9 +99,10 @@ export default class widgetItemComponent extends React.Component {
                                 <button onClick={() => this.props.editWidget(this.state.widget)} className="btn btn-success float-right">Save</button>
                                 <div className="d-inline-flex float-right pr-2 my-auto">
                                     <div className="form-group">
-                                        <select value={this.currentWidgetType()} onChange={(e) => this.updateType(e.target.value)} className="form-control">
+                                        <select value={this.currentWidgetType()} onChange={(e) => this.updateWidgetType(e.target.value)} className="form-control">
                                             <option value="HEADING" >Heading</option>
                                             <option value="PARAGRAPH">Paragraph</option>
+                                            <option value="LIST">List</option>
                                         </select>
                                     </div>
                                 </div>
@@ -117,6 +133,14 @@ export default class widgetItemComponent extends React.Component {
                             <ParagraphWidgetComponent
                                 updateTitle = {this.updateTitle}
                                 updateText = {this.updateText}
+                                widget = {this.props.widget}/>
+                        }
+                        {
+                            this.state.widget.type === "LIST" &&
+                            <ListWidgetComponent
+                                updateTitle = {this.updateTitle}
+                                updateText = {this.updateText}
+                                updateListType = {this.updateListType}
                                 widget = {this.props.widget}/>
                         }
                      </div>

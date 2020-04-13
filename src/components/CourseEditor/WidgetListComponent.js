@@ -64,7 +64,7 @@ class WidgetListComponent extends React.Component {
                    !this.state.previewStatus &&
                    <ul className="container">
                         {
-                            this.props.widgets.map(widget =>
+                            this.props.widgets && this.props.widgets.map(widget =>
                             <WidgetItemComponent key={widget.id} widget={widget}
                                                  deleteWidget={this.props.deleteWidget}
                                                  editWidget = {this.props.editWidget}

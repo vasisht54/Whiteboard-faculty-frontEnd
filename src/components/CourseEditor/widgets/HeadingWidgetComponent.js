@@ -3,41 +3,18 @@ import React from "react";
 export default class HeadingWidgetComponent extends React.Component {
 
     state = {
-        widget: this.props.widget,
-        previewText: this.props.widget.text
+        widget: this.props.widget
     };
-
-    componentDidMount() {
-        this.state.previewText = <h1>{this.state.widget.text}</h1>
-    }
 
     handleHeadingSize = (size) => {
-        switch (size) {
-            case "1": this.setState({
-                previewText: <h1>{this.state.widget.text}</h1>
-            });
-            break;
-            case "2": this.setState({
-                previewText: <h2>{this.state.widget.text}</h2>
-            });
-                break;
-            case "3": this.setState({
-                previewText: <h3>{this.state.widget.text}</h3>
-            });
-                break;
-            case "4": this.setState({
-                previewText: <h4>{this.state.widget.text}</h4>
-            });
-                break;
-            case "5": this.setState({
-                previewText: <h5>{this.state.widget.text}</h5>
-            });
-                break;
-            case "6": this.setState({
-                previewText: <h6>{this.state.widget.text}</h6>
-            });
-        }
-    };
+        const num = parseInt(size)
+        this.setState({
+            widget: {
+                ...this.state.widget,
+                size: num
+            }
+        })
+    }
 
     handleTextChange = (text) => {
         this.setState({
@@ -69,7 +46,7 @@ export default class HeadingWidgetComponent extends React.Component {
                            value={this.state.widget.text} placeholder="Heading text"/>
                 </div>
                 <div className="pl-2 pt-3 pb-3">
-                    <select className="form-control"
+                    <select value={this.state.widget.size} className="form-control"
                             onChange={(e) => {
                                 this.handleHeadingSize(e.target.value);
                                 this.props.updateSize(e.target.value);
@@ -94,11 +71,12 @@ export default class HeadingWidgetComponent extends React.Component {
                 <div className="pl-2">
                     <h4>Preview</h4>
                 </div>
-                {
-                    <div className="pl-2">
-                        {this.state.previewText}
-                    </div>
-                }
+                    {this.state.widget.size === 1 && <h1 className="pl-2">{this.state.widget.text}</h1>}
+                    {this.state.widget.size === 2 && <h2 className="pl-2">{this.state.widget.text}</h2>}
+                    {this.state.widget.size === 3 && <h3 className="pl-2">{this.state.widget.text}</h3>}
+                    {this.state.widget.size === 4 && <h4 className="pl-2">{this.state.widget.text}</h4>}
+                    {this.state.widget.size === 5 && <h5 className="pl-2">{this.state.widget.text}</h5>}
+                    {this.state.widget.size === 6 && <h6 className="pl-2">{this.state.widget.text}</h6>}
             </div>
         )
     }

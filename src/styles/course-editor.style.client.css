@@ -200,10 +200,6 @@ input:checked + .slider:before {
     cursor: pointer;
 }
 
-.nav-link.wbdv-topic.show-active {
-    background-color: #f0f2f4;
-}
-
 .row.wbdv-main-row {
     margin-right: 0;
 }
