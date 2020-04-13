@@ -66,7 +66,7 @@ class ModuleItemComponent extends React.Component {
                                 type="button"
                                 style={{color: "white"}}
                                 className="btn btn-sm float-right wbdv-bold wbdv-module-item-delete-btn">
-                            X
+                            <i className="far fa-trash-alt"></i>
                         </button>
                     </div>
                 }

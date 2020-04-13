@@ -67,7 +67,7 @@ class LessonTabComponent extends React.Component{
                             this.props.deleteLesson(this.props.lesson._id)}}
                                 type="button"
                                 className="btn btn-sm float-right wbdv-bold wbdv-module-item-delete-btn">
-                            X
+                            <i className="far fa-trash-alt"></i>
                         </button>
                     </div>
                 }

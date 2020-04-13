@@ -152,6 +152,7 @@ export default class widgetItemComponent extends React.Component {
                             this.state.widget.type === "IMAGE" &&
                                 <ImageWidgetComponent
                                     updateTitle = {this.updateTitle}
+                                    updateText = {this.updateText}
                                     widget = {this.props.widget} />
                         }
                      </div>

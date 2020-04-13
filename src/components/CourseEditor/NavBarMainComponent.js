@@ -22,9 +22,9 @@ class NavBarMainComponent extends React.Component {
             <div className="wbdv-navbar">
                 <nav className="navbar navbar-dark navbar-expand-md" >
                     <button onClick={() => this.props.history.push("/")} className="btn wbdv-course-editor wbdv-close wbdv-bold">
-                        X
+                        <i className="fas fa-arrow-circle-left fa-2x"></i>
                     </button>
-                    &nbsp;<a className="navbar-brand wbdv-bold wbdv-course-title" href="#">{this.state.course.title}</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a className="navbar-brand wbdv-bold wbdv-course-title" href="#">{this.state.course.title}</a>
                     <div className="navbar-collapse flex-row-reverse">
                         <NavListComponent navTabs = {[
                             {title: "Build", _id: "1" },

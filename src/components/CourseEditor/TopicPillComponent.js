@@ -65,7 +65,7 @@ class TopicPillComponent extends React.Component {
                                 this.props.deleteTopic(this.props.topic._id)}}
                                     type="button"
                                     className="btn btn-sm float-right wbdv-bold wbdv-module-item-delete-btn">
-                                X
+                                <i className="far fa-trash-alt"></i>
                             </button>
                         </div>
                 }
