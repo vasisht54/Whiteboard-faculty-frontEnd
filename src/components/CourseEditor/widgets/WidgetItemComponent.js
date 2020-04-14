@@ -37,6 +37,15 @@ export default class widgetItemComponent extends React.Component {
         })
     };
 
+    updateSrc = (src) => {
+        this.setState({
+            widget: {
+                ...this.state.widget,
+                src
+            }
+        })
+    };
+
 
     updateWidgetType = (type) => {
         this.setState({
@@ -152,7 +161,7 @@ export default class widgetItemComponent extends React.Component {
                             this.state.widget.type === "IMAGE" &&
                                 <ImageWidgetComponent
                                     updateTitle = {this.updateTitle}
-                                    updateText = {this.updateText}
+                                    updateSrc = {this.updateSrc}
                                     widget = {this.props.widget} />
                         }
                      </div>

@@ -31,7 +31,7 @@ export default class ImageWidgetComponent extends React.Component {
                     <input className="form-control"
                            onChange={(e) => {
                                this.handleURLChange(e.target.value);
-                               this.props.updateText(e.target.value);
+                               this.props.updateSrc(e.target.value);
                            }}
                            value={this.state.widget.src} placeholder="Image URL"/>
                 </div>

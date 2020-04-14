@@ -12,15 +12,15 @@ class WidgetListComponent extends React.Component {
     };
 
     componentDidMount() {
-        this.props.findWidgetsForTopic(this.props.topicId);
+        this.props.findWidgetsForTopic(this.props.topicId)
     }
 
     newWidgetTemplate = {
-        id: new Date().getTime()+"",
+        id: "",
         title: "",
         topicId: this.props.topicId,
         type: "HEADING",
-        order: this.getOrder(),
+        order: '',
         text: "Sample Heading text",
         src: null,
         size: 1,
@@ -31,10 +31,6 @@ class WidgetListComponent extends React.Component {
         value: null
     };
 
-    getOrder() {
-        return this.props.widgets.length + 1;
-    }
-
     previewToggle = (e) => {
         this.setState({
             previewStatus: !this.state.previewStatus
@@ -43,6 +39,7 @@ class WidgetListComponent extends React.Component {
 
 
     render() {
+        console.log(this.props.widgets.length);
         return(
             <div className="container">
                 {
@@ -75,7 +72,10 @@ class WidgetListComponent extends React.Component {
                         {
                             this.props.topicId &&
                             <div className="btn float-right">
-                                <i onClick={() => this.props.createWidget(this.props.topicId, this.newWidgetTemplate)}
+                                <i onClick={() => {
+                                    console.log(this.props.topicId);
+                                    this.props.createWidget(this.props.topicId, this.newWidgetTemplate, this.props.widgets.length+1, new Date().getTime()+"")
+                                }}
                                 className="fas fa-plus-square fa-2x"/>
                             </div>
                         }
@@ -104,7 +104,9 @@ const dispatchToPropertyMapper = dispatch => ({
                 dispatch(deleteWidget(widgetId))
             )
     },
-    createWidget: (topicId, widget) => {
+    createWidget: (topicId, widget, order, id) => {
+        widget.order = order
+        widget.id = id
         widgetService.createWidget(topicId, widget)
             .then(response =>
                 dispatch(createWidget(response))
