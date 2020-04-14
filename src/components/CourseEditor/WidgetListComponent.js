@@ -1,7 +1,7 @@
 import React from "react";
 import connect from "react-redux/lib/connect/connect";
 import WidgetItemComponent from "./widgets/WidgetItemComponent";
-import widgetService, {updateWidget} from "../../services/WidgetService";
+import widgetService from "../../services/WidgetService";
 import {createWidget, deleteWidget, findWidgetsForTopic} from "../../actions/widgetActions";
 import WidgetPreviewComponent from "./widgets/WidgetPreviewComponent";
 

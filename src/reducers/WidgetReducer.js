@@ -8,7 +8,6 @@ const widgetReducer = (state = initialState, action) => {
 
     switch(action.type) {
         case CREATE_WIDGET :
-            console.log("Inside reducer", action.newWidget);
             return {
                 widgets: [
                     ...state.widgets,
@@ -23,7 +22,7 @@ const widgetReducer = (state = initialState, action) => {
 
         case FIND_WIDGETS_FOR_TOPIC:
             return {
-                widgets: action.widgets
+                widgets: action.widgets.sort((a,b) => (a.order > b.order) ? 1 : -1)
             };
 
         default : return state;
