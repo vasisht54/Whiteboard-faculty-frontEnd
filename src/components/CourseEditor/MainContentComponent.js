@@ -11,8 +11,6 @@ const MainContentComponent = (props) =>
         <br />
         <TopicListComponent {...props}/>
 
-        {/*<WidgetUtilityButtonsComponent/>*/}
-
         <div className="row">
           <WidgetListComponent {...props}/>
         </div>

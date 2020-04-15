@@ -22,7 +22,7 @@ const widgetReducer = (state = initialState, action) => {
 
         case FIND_WIDGETS_FOR_TOPIC:
             return {
-                widgets: action.widgets.sort((a,b) => (a.order > b.order) ? 1 : -1)
+                widgets: action.widgets.sort((a,b) => (a.orderSequence > b.orderSequence) ? 1 : -1)
             };
 
         default : return state;

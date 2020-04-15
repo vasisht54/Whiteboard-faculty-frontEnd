@@ -24,6 +24,22 @@ export default class ImageWidgetComponent extends React.Component {
         })
     }
 
+    getWidgetValue = (dtype) => {
+        if(dtype === "src") {
+            if (this.state.widget.src === null) {
+                return "";
+            } else
+                return this.state.widget.src;
+        }
+        else if(dtype === "value") {
+            if(this.state.widget.value === null) {
+                return "";
+            }
+            else
+                return this.state.widget.value;
+        }
+    }
+
     render() {
         return (
             <div className="card-body">
@@ -33,7 +49,7 @@ export default class ImageWidgetComponent extends React.Component {
                                this.handleURLChange(e.target.value);
                                this.props.updateSrc(e.target.value);
                            }}
-                           value={this.state.widget.src} placeholder="Image URL"/>
+                           value={this.getWidgetValue("src")} placeholder="Image URL"/>
                 </div>
                 <div className="pl-2 pt-3">
                     <input className="form-control"

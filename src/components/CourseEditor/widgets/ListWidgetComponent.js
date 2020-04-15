@@ -43,19 +43,35 @@ export default class ListWidgetComponent extends React.Component {
         })
     };
 
+    getWidgetValue = (dtype) => {
+        if(dtype === "text") {
+            if (this.state.widget.text === null) {
+                return "";
+            } else
+                return this.state.widget.text;
+        }
+        else if(dtype === "value") {
+            if(this.state.widget.value === null) {
+                return "";
+            }
+            else
+                return this.state.widget.value;
+        }
+    }
+
     render() {
         return (
             <div className="card-body">
                 <div className="pl-2 form-group">
                     <textarea className="form-control" rows="3"
-                           onChange={(e) => {
+                              onChange={(e) => {
                                this.handleTextChange(e.target.value);
                                this.props.updateText(e.target.value);
                            }}
-                           value={this.state.widget.text} placeholder="Enter one list item per line"/>
+                              value={this.getWidgetValue("text")} placeholder="Enter one list item per line"/>
                 </div>
                 <div className="pl-2 pb-3">
-                    <select value={this.state.widget.value} className="form-control"
+                    <select value={this.getWidgetValue("value")} className="form-control"
                             onChange={(e) => {
                                 this.handleListType(e.target.value);
                                 this.props.updateListType(e.target.value);

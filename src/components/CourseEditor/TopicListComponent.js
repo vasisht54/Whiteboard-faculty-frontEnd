@@ -69,7 +69,7 @@ const dispatchToPropertyMapper = dispatch => {
         editTopic: (topic) => {
             topicService.updateTopic(topic._id, topic)
                 .then(response =>
-                    topicService.findTopicsForLesson(topic._lessons)
+                    topicService.findTopicsForLesson(topic.lessonId)
                         .then(actualTopics => {
                                 dispatch(findTopicsForLesson(actualTopics))
                             }

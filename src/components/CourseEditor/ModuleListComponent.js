@@ -8,7 +8,9 @@ import {
 } from "../../actions/moduleActions";
 import moduleService from "../../services/ModuleService";
 import lessonService from "../../services/LessonService";
+import widgetService from "../../services/WidgetService"
 import {findLessonsForModule} from "../../actions/lessonActions";
+import {findWidgetsForTopic} from "../../actions/widgetActions";
 
 class ModuleListComponent extends React.Component {
 

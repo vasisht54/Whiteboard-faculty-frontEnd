@@ -12,7 +12,7 @@ class WidgetListComponent extends React.Component {
     };
 
     componentDidMount() {
-        this.props.findWidgetsForTopic(this.props.topicId)
+        this.props.topicId && this.props.findWidgetsForTopic(this.props.topicId)
     }
 
     newWidgetTemplate = {
@@ -20,7 +20,7 @@ class WidgetListComponent extends React.Component {
         title: "",
         topicId: this.props.topicId,
         type: "HEADING",
-        order: '',
+        orderSequence: '',
         text: "Sample Heading text",
         src: null,
         size: 1,
@@ -39,7 +39,6 @@ class WidgetListComponent extends React.Component {
 
 
     render() {
-        console.log(this.props.widgets.length);
         return(
             <div className="container">
                 {
@@ -73,8 +72,7 @@ class WidgetListComponent extends React.Component {
                             this.props.topicId &&
                             <div className="btn float-right">
                                 <i onClick={() => {
-                                    console.log(this.props.topicId);
-                                    this.props.createWidget(this.props.topicId, this.newWidgetTemplate, this.props.widgets.length+1, new Date().getTime()+"")
+                                    this.props.createWidget(this.props.topicId, this.newWidgetTemplate, this.props.widgets.length+1)
                                 }}
                                 className="fas fa-plus-square fa-2x"/>
                             </div>
@@ -104,9 +102,8 @@ const dispatchToPropertyMapper = dispatch => ({
                 dispatch(deleteWidget(widgetId))
             )
     },
-    createWidget: (topicId, widget, order, id) => {
-        widget.order = order
-        widget.id = id
+    createWidget: (topicId, widget, order) => {
+        widget.orderSequence = order
         widgetService.createWidget(topicId, widget)
             .then(response =>
                 dispatch(createWidget(response))
@@ -115,7 +112,7 @@ const dispatchToPropertyMapper = dispatch => ({
     editWidget: (widget) => {
         widgetService.updateWidget(widget.id, widget)
             .then(response =>
-                widgetService.findWidgetsForTopic(widget.topicId)
+                widgetService.findWidgetsForTopic(widget.topic._id)
                     .then(actualWidgets => {
                             dispatch(findWidgetsForTopic(actualWidgets))
                         }
@@ -125,7 +122,7 @@ const dispatchToPropertyMapper = dispatch => ({
     updateWidgetOrder: (direction, widget) => {
         widgetService.updateWidgetOrder(widget.id, widget, direction)
             .then(response =>
-                widgetService.findWidgetsForTopic(widget.topicId)
+                widgetService.findWidgetsForTopic(widget.topic._id)
                     .then(actualWidgets => {
                         dispatch(findWidgetsForTopic(actualWidgets))
                     })

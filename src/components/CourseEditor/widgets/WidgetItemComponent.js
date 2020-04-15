@@ -107,7 +107,9 @@ export default class widgetItemComponent extends React.Component {
                                         this.props.deleteWidget(this.state.widget.id)}}
                                             className="btn btn-danger btn-sm">X</button>
                                 </div>
-                                <button onClick={() => this.props.editWidget(this.state.widget)}
+                                <button onClick={() => {
+                                    this.props.editWidget(this.state.widget)
+                                }}
                                         className="btn btn-success float-right">Save</button>
                                 <div className="d-inline-flex float-right pr-2 my-auto">
                                     <div className="form-group">

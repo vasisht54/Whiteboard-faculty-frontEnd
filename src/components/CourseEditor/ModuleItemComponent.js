@@ -34,7 +34,9 @@ class ModuleItemComponent extends React.Component {
             <li className="nav-item bg-dark pl-3 wbdv-module-item">
                 {   !this.state.editing ?
                     <div className={moduleItemClass}>
-                        <Link className = "wbdv-module-title" onClick={this.findLessons}
+                        <Link className = "wbdv-module-title" onClick={() => {
+                            this.findLessons()
+                        }}
                           to={`/course-editor/${this.props.courseId}/modules/${this.state.module._id}`}>
                             {this.state.module.title}
                         </Link>

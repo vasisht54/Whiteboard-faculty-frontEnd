@@ -58,7 +58,7 @@ class widgetPreviewComponent extends React.Component {
                         <div className="card-body">
                             {
                                 this.props.widgets.map(widget =>
-                                    <div className="pl-4 row">
+                                    <div key={widget.id} className="pl-4 row">
                                         {this.inspectForWidgetTypeAndSize(widget)}
                                     </div>
                                 )

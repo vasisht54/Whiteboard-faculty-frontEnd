@@ -31,7 +31,7 @@ class TopicPillComponent extends React.Component {
     };
 
     render() {
-        const topicClass = `nav-link wbdv-topic${this.props.activeTopicId === this.state.topic._id ? " shadow" : ""}`;
+        const topicClass = `nav-link wbdv-topic${this.props.activeTopicId === this.state.topic._id.toString() ? " shadow" : ""}`;
         return (
             <li className="nav-item">
                 {
