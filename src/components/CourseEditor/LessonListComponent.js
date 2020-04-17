@@ -9,7 +9,8 @@ import {findTopicsForLesson} from "../../actions/topicActions";
 class LessonListComponent extends React.Component {
 
     componentDidMount() {
-        this.props.findLessonsForModule(this.props.moduleId);
+        /*this.props.findLessonsForModule(this.props.moduleId);*/
+        this.props.findTopicsForLesson(this.props.lessonId)
     }
 
     render() {

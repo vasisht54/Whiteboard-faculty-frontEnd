@@ -3,7 +3,8 @@ import CourseEditorComponent from "../components/CourseEditor/CourseEditorCompon
 import {createCourse, findAllCourses} from "../services/CourseService";
 import CourseListComponent from "../components/CourseListComponent";
 import {BrowserRouter, Route} from "react-router-dom";
-import "../styles/course-editor.style.client.css"
+import "../styles/course-editor.style.client.css";
+/*import 'font-awesome/css/font-awesome.css';*/
 
 class CourseManagerContainer extends React.Component {
     state = {

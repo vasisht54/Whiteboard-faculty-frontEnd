@@ -12,7 +12,8 @@ class WidgetListComponent extends React.Component {
     };
 
     componentDidMount() {
-        this.props.topicId && this.props.findWidgetsForTopic(this.props.topicId)
+        if (this.props.topicId !== undefined)
+            this.props.topicId && this.props.findWidgetsForTopic(this.props.topicId)
     }
 
     newWidgetTemplate = {

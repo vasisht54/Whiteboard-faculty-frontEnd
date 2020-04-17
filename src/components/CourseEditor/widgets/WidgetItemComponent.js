@@ -93,6 +93,10 @@ export default class widgetItemComponent extends React.Component {
         })
     }
 
+    hi =  () => {
+        alert("hi")
+    }
+
 
     render() {
         return (
@@ -102,9 +106,9 @@ export default class widgetItemComponent extends React.Component {
                         <div className="col-sm-3"><h3>{this.handleWidgetName()}</h3></div>
 
                             <div className="col-sm-9">
-                                <div className="d-inline-flex float-right pt-1 pl-2">
-                                    <button onClick={() => {
-                                        this.props.deleteWidget(this.state.widget.id)}}
+                               <div className="d-inline-flex float-right pt-1 pl-2">
+                                    <button onClick = {() =>
+                                        this.props.deleteWidget(this.state.widget.id)}
                                             className="btn btn-danger btn-sm">X</button>
                                 </div>
                                 <button onClick={() => {

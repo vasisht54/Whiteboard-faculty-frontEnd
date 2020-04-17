@@ -41,7 +41,9 @@ export default class HeadingWidgetComponent extends React.Component {
                     <input className="form-control"
                            onChange={(e) => {
                                this.handleTextChange(e.target.value);
+                               /*this.handleTextChange(this.value)*/
                                this.props.updateText(e.target.value);
+
                            }}
                            value={this.state.widget.text} placeholder="Heading text"/>
                 </div>

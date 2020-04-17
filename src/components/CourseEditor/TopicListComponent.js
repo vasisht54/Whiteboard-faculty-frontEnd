@@ -9,7 +9,8 @@ import {findWidgetsForTopic} from "../../actions/widgetActions";
 class TopicListComponent extends React.Component {
 
     componentDidMount() {
-        this.props.findTopicsForLesson(this.props.lessonId);
+        /*this.props.findTopicsForLesson(this.props.lessonId);*/
+        this.props.findWidgetsForTopic(this.props.topicId)
     }
 
     render() {
