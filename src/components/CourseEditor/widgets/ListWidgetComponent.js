@@ -24,11 +24,12 @@ export default class ListWidgetComponent extends React.Component {
         })
     };
 
-    handleListType = (type) => {
+    handleListType = (value) => {
+        console.log(value)
         this.setState({
             widget: {
                 ...this.state.widget,
-                value: type
+                value
             }
         })
     }
@@ -60,6 +61,7 @@ export default class ListWidgetComponent extends React.Component {
     }
 
     render() {
+        console.log(this.state.widget)
         return (
             <div className="card-body">
                 <div className="pl-2 form-group">
@@ -95,16 +97,12 @@ export default class ListWidgetComponent extends React.Component {
                 {
                     this.state.widget.value === "UL" &&
                     <ul>
-                        {/*{this.handleList(this.state.widget.text.replace(/\r?\n/g, '\n'))}*/}
-                        {/*{this.handleList(this.state.widget.text.replace(/\n/g, '\n'))}*/}
                         {this.handleList(this.state.widget.text)}
                     </ul>
                 }
                 {
                     this.state.widget.value === "OL" &&
                     <ol>
-                        {/*{this.handleList(this.state.widget.text.replace(/\r?\n/g, '\n'))}*/}
-                        {/*{this.handleList(this.state.widget.text.replace(/\n/g, '\n'))}*/}
                         {this.handleList(this.state.widget.text)}
                     </ol>
                 }

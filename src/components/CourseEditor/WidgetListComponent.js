@@ -29,7 +29,7 @@ class WidgetListComponent extends React.Component {
         height: 0,
         cssClass: 0,
         style: null,
-        value: null
+        value: "UL"
     };
 
     previewToggle = (e) => {

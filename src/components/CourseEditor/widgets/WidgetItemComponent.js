@@ -93,11 +93,6 @@ export default class widgetItemComponent extends React.Component {
         })
     }
 
-    hi =  () => {
-        alert("hi")
-    }
-
-
     render() {
         return (
             <div  key={this.state.widget.id}>
